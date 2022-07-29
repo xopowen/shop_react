@@ -4,7 +4,12 @@ import Header from "../header/header";
 import Footer from "../footer/footer";
 import SubMenu from "../header/subMenu";
 
-export const HeaderHead = React.createContext({head:"",setHead:()=>{}});
+export const HeaderHead = React.createContext(
+    /*
+    * испоьзуется в -> submenu(setHead),PopupMenu(sethead),sections(head),catalog_rpoducts(head)
+    * */
+    {head:"",setHead:()=>{}});
+
 export function Layout(){
     let {head,setHead} = useState('')
     const value = useMemo(
