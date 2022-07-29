@@ -1,0 +1,56 @@
+
+.Popup-menu {
+  position: absolute;
+  background: #FFFFFF;
+  border-radius: 0px 0px 45px 45px;
+  overflow: hidden;
+  width: 100%;
+  display: grid;
+  grid-template-columns: 40% auto;
+  z-index: 150;
+  top: 70px;
+  &_list{
+    padding: 5% 0% 8%;
+  }
+  // .Popup-menu_catalog
+  &_catalog {
+    background: #497AE2;
+    color: #FFFFFF;
+
+  }
+  &_item {
+    height: 53px;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+  }
+  // .Popup-menu_item
+  &_catalog &_item {
+
+    padding-left: 7%;
+    border-right: 1px solid #3257A4;
+    &:hover{
+      color: blue;
+      background: white;
+    }
+
+  }
+
+  &_start-filter{
+    font-family: 'Geometria';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 20px;
+  }
+
+  &_start-filter &_item {
+    padding-left: 10%;
+    &:hover{
+      color: blue;
+
+    }
+  }
+
+}
+.Popup-menu_item a:link, .Popup-menu_item a:visited   { color: inherit }    /* unvisited links */

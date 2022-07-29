@@ -1,0 +1,127 @@
+.catalog {
+
+
+  // .catalog_catalog-menu
+  &_catalog-menu {
+
+  }
+
+  // .catalog_body
+  &_body {
+    display: flex;
+    border-top: 3px solid #3257A4;
+    margin-right: 7.5%;
+    gap: 2%;
+
+  }
+
+  // .catalog_filter
+  &_filter {
+    background: white;
+    padding: 4% 1% 4% 7.5%;
+  }
+
+  // .catalog_products
+  &_products {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2%;
+    & .card-product{
+      align-self: baseline;
+    }
+  }
+}
+
+
+.catalog-menu {
+  display: flex;
+  justify-content: space-between;
+  // .catalog-menu_left
+  &_left {
+    display: flex;
+    gap: 23px;
+  }
+
+  // .catalog-menu_amt
+  &_amt {
+  }
+
+  // .catalog-menu_clear-filter
+  &_clear-filter {
+  }
+
+  // .catalog-menu_order-sort
+  &_order-sort {
+    select {
+      width: 239px;
+      height: 35px;
+      padding: 5px 35px 5px 5px;
+      font-size: 18px;
+      -webkit-appearance: none;
+      -moz-appearance: none;
+      appearance: none;
+      background: none;
+      text-align: right;
+    }
+    select::-ms-expand {
+      display: none; /* удалите стрелку по умолчанию в IE 10 и 11 */
+    }
+    & option{
+      background: white;
+    }
+  }
+}
+
+
+
+.filter {
+  // .filter_praise
+  &_praise {
+    display: flex;
+  }
+
+  // .filter_min-praise
+  &_max-min {
+    input {
+      height: 35px;
+      padding: 6px 2px;
+      background: #FFFFFF;
+      border-top: 0.5px solid #3257A4;
+      border-bottom: 0.5px solid #3257A4;
+      margin: 16px 0px;
+    }
+    &__min{
+    }
+    &__max input{
+      border-right: 0.5px solid #3257A4;
+      border-radius: 5px;
+
+    }
+    &__min input{
+      border-left:  0.5px solid #3257A4;
+      border-radius: 5px;
+
+    }
+    &__min:after{
+      content: "|";
+      margin: -3px;
+      color: #3257A4;
+      font-size: 15px;
+    }
+  }
+
+  // .filter_element-filtre
+  &_element-filtre {
+    &  p{
+      margin: 16px 0px;
+    }
+    & ul{
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    & input{
+      margin-right:9px ;
+    }
+  }
+}

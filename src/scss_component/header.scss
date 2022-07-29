@@ -1,0 +1,57 @@
+
+.header {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  gap: 10px;
+  max-width: 1230px + 105*2;
+  width: 100%;
+  position: fixed;
+  background: white !important;
+  padding: 0 105px;
+  z-index: 50;
+  @media screen and (max-width: 1260px) {
+    max-width: 100%;
+    padding: 0 15%;
+  }
+  &_img {
+  }
+
+  // .header_catalog
+  &_catalog {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+
+  // .header_quest
+  &_quest {
+
+    display: flex;
+    align-content: center;
+    width: 314px;
+    height: 36px;
+    align-items: center;
+    justify-content: space-between;
+    margin: 17px;
+    padding: 0px 17px;
+    gap: 10px;
+
+    background: #FFFFFF;
+    box-shadow: inset 0px 0px 3px rgba(50, 87, 164, 0.25);
+    border-radius: 10px;
+    & input{
+      width: 100%;
+    }
+  }
+
+  // .header_order-call
+  &_order-call {
+    display: flex;
+  }
+
+  // .header_network
+  &_network {
+    display: flex;
+  }
+}
