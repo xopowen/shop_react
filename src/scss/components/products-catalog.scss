@@ -1,0 +1,48 @@
+
+.products-catalog{
+  display: flex;
+  flex-direction: column;
+&__body{
+     padding: 15px;
+     display: grid;
+     grid-template-columns: repeat(auto-fill,minmax(200px,376px-15));
+     max-height:$products_catalog_body-max-height;
+     overflow-y: hidden;
+     justify-content: center;
+     gap: 12px;
+     margin: 2% 0px;
+
+  &_active{
+    animation: 5s linear 1 product-body-full forwards ;
+  }
+  &_close{
+    animation-name: product-body-full;
+    animation-duration: 3s;
+    animation-direction: reverse;
+    animation-timing-function: linear;
+  }
+ }
+&__button-show{
+    position: relative;
+    align-self: end;
+    background:none;
+    &:active{
+      transform-origin: left top;
+      transform: scale(1.1);
+
+    }
+
+  &:after{
+    position: absolute;
+    right: -15px;
+    content: '>';
+    vertical-align: center;
+    transform: rotate(90deg) translateX(36%);
+
+     }
+
+  &_active:after{
+    content: '<';
+  }
+ }
+}

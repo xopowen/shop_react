@@ -1,0 +1,222 @@
+.forms{
+  display: grid;
+  grid-template-columns: repeat(2,auto);
+  padding: 30px 10%;
+  justify-content: space-between;
+  @include media-phones375max{
+    grid-template-columns: auto;
+  }
+}
+
+.form {
+  overflow: hidden;
+  padding:0 0 ;
+  input,textarea{
+    width: 100%;
+    &:focus{
+      outline: 0.5px solid #32A444;
+    }
+
+    &:invalid,&[aria-invalid=true]{
+      outline: 0.5px solid #C41C1B;
+    }
+  }
+
+  &__amt{
+    margin-top: 10px;
+    width: 84px;
+    height: 28px;
+  }
+  &__forgotten-password{
+    text-align: end;
+    margin-top: 19px;
+    @extend %text_link_forgetting_password;
+  }
+
+  .form__header, .form__body, .form__footer{
+    padding:21.5px;
+  }
+
+  // .form_not-frame
+  &_with-frame {
+    max-width: 1020px;
+    margin: auto;
+    border-radius: 15px;
+    border: 1px solid #E5E5E5;
+    background: #F7F9FB;
+    box-shadow: 0px 10px 30px 0px rgba(73, 122, 226, 0.10);
+    text-align: start;
+
+    .form__header, .form__body, .form__footer{
+      padding: 30px 10%;
+    }
+
+    // .form__header
+    .form__header {
+      display: grid;
+      grid-template-columns: auto 62px;
+      grid-template-rows: auto auto;
+      border-bottom: 1px $color_active_link solid;
+      @include media-phones375max{
+        grid-template-columns: auto 31px;
+        gap: 5px;
+      }
+      picture,
+      source,
+      img{
+        grid-row: span 2;
+        height: 62px;
+        @include media-phones375max{
+          height: 31px;
+        }
+      }
+      &_while{
+        background: $white_color;
+      }
+    }
+    .form__body{
+      display: grid;
+      grid-template-columns: 50% 50%;
+      column-gap: calc(min(3vw,30px));
+      row-gap: 30px;
+      @include media-phones375max{
+        grid-template-columns: auto;
+      }
+
+    }
+    .form__footer{
+
+    }
+  }
+
+  // .form__header
+  &__header {
+    h2{
+      text-align: start ;
+      @extend .sections__head;
+    }
+
+  }
+
+  // .form__body
+  &__body {
+    display: grid;
+    column-gap: calc(min(3vw,30px));
+    row-gap: 30px;
+    input[type=text],input[type=email],input[type=tel],input[type=password]{
+
+      height: 63px;
+
+    }
+    input[type=text],input[type=email],input[type=tel],input[type=password],
+    textarea{
+      border-radius: 15px;
+      background: #FFF;
+      box-shadow: 0px 0px 3px 0px rgba(50, 87, 164, 0.25) inset;
+      padding: 25px 33px;
+    }
+
+
+
+  }
+
+  // .form__field
+  &__field {
+    &_tel{
+      position: relative;
+        picture,
+          source,
+          img{
+          position: absolute;
+          width: 14px;
+          height: 14px;
+          top: 50%;
+          left: 30px;
+          transform: translateY(-50%);
+        }
+      input[type=tel]{
+        padding-left: 30px+14+11;
+      }
+    }
+    &_textarea{
+      grid-column: span 2;
+      grid-row: span 3;
+    }
+    &_textarea-right{
+      grid-column: span 2;
+      grid-row: span 5;
+      grid-column-start: 2;
+      padding: 30px 0;
+      textarea{
+        height: 100%;
+      }
+    }
+    &_radio{
+      display: grid;
+      grid-template-columns: 11px auto;
+      column-gap: 11px;
+      row-gap: 30px;
+      label{
+        grid-column-start: 2;
+        position: relative;
+        left: -20px;
+      }
+      & label:before {
+        content: '';
+        display: inline-block;
+        width: 11px;
+        height: 11px;
+        flex-shrink: 0;
+        flex-grow: 0;
+        border: 1px solid #adb5bd;
+        border-radius: 0.25em;
+        margin-right: 0.5em;
+        margin-top: -50%;
+        background-repeat: no-repeat;
+        background-position: center center;
+        background-size: 50% 50%;
+      }
+
+      & :checked+label::before {
+        border-radius: 1px;
+        border: 0.5px solid #3257A4;
+        background: #3257A4;
+      }
+
+      p{
+        grid-column-start:2;
+      }
+      position: relative;
+      input[type=radio],
+      input[type=checkbox]
+      {
+        position: absolute;
+        z-index: -1;
+        opacity: 0;
+      }
+    }
+  }
+
+  // .form__help-text
+  &__help-text {
+  }
+
+  // .form__footer
+  &__footer {
+    display: grid;
+    gap: 18px;
+  }
+
+  // .form__text-smail
+  &__text-smail {
+  @extend %text_under_button_form;
+  }
+
+  input[type=submit]{
+    cursor: pointer;
+    width: 204px;
+    height: 47px;
+    border-radius: 10px;
+  }
+
+}

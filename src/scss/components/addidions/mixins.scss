@@ -1,0 +1,37 @@
+
+@mixin media-phones375max() {
+  @media screen and (max-width: 375px) {
+   @content
+  }
+}
+
+// Landscape-phones and down
+@mixin media-phones480max(){
+  @media (max-width: 480px) {
+    @content
+  }
+}
+//Landscape phone to portrait tablet
+@mixin media-portrait767max(){
+  @media (max-width: 768px) {
+    @content
+  }
+}
+// and desktop
+@mixin media-desktop768min979max(){
+  @media (min-width: 769px) and (max-width: 979px) {
+    @content
+  }
+}
+
+// Large desktop
+@mixin media-large-desktop1200min(){
+  @media (min-width: 1200px) {
+    @content
+  }
+}
+@mixin media-not-hover(){
+  @media not (hover: none){
+    @content
+  }
+}

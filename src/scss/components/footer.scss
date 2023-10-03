@@ -1,0 +1,75 @@
+
+.footer {
+  display: flex;
+  background: black;
+  color: white;
+  padding: 4.5% 7.2% 10% 7.2%;
+  justify-content: space-between;
+  gap: 50px;
+  position: relative;
+  // .footer__left
+  &__left {
+    display: flex;
+    gap: 72px;
+    @include media-portrait767max{
+      gap: 30px;
+    }
+    @include media-phones375max{
+      flex-wrap: wrap-reverse;
+    }
+  }
+
+  // .footer__right
+  &__right {
+    display: flex;
+    flex-shrink: 2;
+    gap: 11%;
+    text-align: center;
+    @include media-portrait767max{
+      gap: 5%;
+    }
+    @include media-phones375max{
+      display: none;
+    }
+  }
+
+
+  &__imgs {
+    width: 142px;
+    display: flex;
+    flex-direction: column;
+    gap: 35%;
+  }
+  &__nav{
+    ul{
+      display: grid;
+      grid-template-columns: auto auto;
+      grid-template-rows: auto auto auto auto auto;
+      row-gap: 20px;
+      justify-content: space-between;
+      column-gap: 68px;
+    }
+  }
+
+  // .footer__info
+  &__info {
+    display: flex;
+    flex-direction: column;
+
+    .info__header{
+      flex-grow: 0.9;
+    }
+
+
+  }
+
+  &__button-blow{
+    position: absolute;
+    display: flex;
+    gap: 5px;
+    bottom: 37px;
+    right: 7.2%;
+  }
+}
+
+

@@ -1,0 +1,47 @@
+
+
+.sections {
+  padding: 5% 0px;
+
+  &:last-child{
+    margin-bottom: 4%;
+  }
+  &:first-child{
+    margin-top: 6%;
+  }
+
+  &_full-page{
+    padding: 5% !important;
+    margin: 5% 0px;
+    max-width: none;
+    background: #FFFFFF !important;
+    border-radius: 15px;
+  }
+  &_head-left{
+    .sections__head {
+      text-align: left;
+
+    }
+
+  }
+  &__head {
+    color: $color_head_sction;
+    @extend %head_section;
+
+  }
+  &__header {
+    text-align: center;
+
+  }
+  // .sections_full
+  &_full {
+    max-width: 1170px;
+    margin: auto !important;
+    padding: 5% 0% 1% 0%;
+    background: #FFFFFF !important;
+    border-radius: 45px;
+  }
+  &__body {
+    margin-top: 4%;
+  }
+}

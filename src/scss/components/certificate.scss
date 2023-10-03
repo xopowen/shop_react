@@ -1,0 +1,18 @@
+
+
+.certificate {
+  // .certificate__list
+  &__list {
+    display: flex;
+    flex-direction: column;
+    gap: 23px;
+  }
+
+  // .certificate__item
+  &__item {
+  a{
+    display: flex;
+    gap: 8px;
+  }
+  }
+}

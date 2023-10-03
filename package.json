@@ -4,15 +4,13 @@
   "private": true,
   "dependencies": {
     "4": "0.0.0",
+    "@pbe/react-yandex-maps": "^1.2.4",
     "@testing-library/jest-dom": "^5.16.4",
     "@testing-library/react": "^13.3.0",
     "@testing-library/user-event": "^13.5.0",
     "group-css-media-queries": "^1.4.1",
-    "imagemin": "^8.0.1",
-    "imagemin-mozjpeg": "^10.0.0",
-    "imagemin-pngquant": "^9.0.2",
-    "imagemin-webp": "^7.0.0",
-    "imagemin-webpack-plugin": "^2.4.2",
+    "mobx": "^6.7.0",
+    "mobx-react-lite": "^3.4.0",
     "node-sass": "^7.0.1",
     "react": "^18.2.0",
     "react-app-rewire-imagemin-plugin": "^1.0.1",
@@ -23,11 +21,12 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
-    "start": "react-scripts start",
+    "start": " react-scripts start  ",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
+  "proxy": "http://localhost:8000",
   "eslintConfig": {
     "extends": [
       "react-app",

@@ -1,0 +1,14 @@
+.agreement-list {
+  display: flex;
+  justify-content: center;
+  gap: 60px;
+  flex-wrap: wrap;
+  // .agreement-list__item
+  &__item {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    text-decoration: underline;
+
+  }
+}

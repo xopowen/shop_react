@@ -1,0 +1,15 @@
+.send-info{
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+  h5{
+    display: flex;
+    gap: 17px;
+    align-items: center;
+    font-family: Geometria;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+  }
+}

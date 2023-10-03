@@ -1,0 +1,244 @@
+
+@import "components/addidions/mixins";
+@import "components/addidions/variable";
+
+@import "components/addidions/fonts";
+@import "components/addidions/style_zeroing";
+@import "components/animation";
+@import "components/header";
+@import "components/main";
+@import "components/card-product";
+@import "components/burger-menu";
+@import "components/news_article";
+@import "components/card-info";
+@import "components/footer";
+@import "components/manfactore";
+@import "components/sections";
+@import "components/card-catalog";
+@import "components/subMenu";
+@import "components/catalog_products";
+@import "components/sliders";
+@import "components/products-catalog";
+@import "components/news";
+@import "components/from";
+@import "components/basket";
+@import "components/over-page";
+@import "components/pop-up-card";
+@import "components/specifications";
+@import "components/feedback";
+@import "components/certificate";
+@import "components/tablets";
+@import "components/agreement-list";
+@import "components/send-info";
+@import "components/events";
+@import "components/compare";
+@import "components/profile";
+
+body{
+  margin:auto;
+  max-width: 1440px;
+  display: flex;
+  flex-direction: column;
+  background:$body_back_color;
+}
+#root{
+  flex-grow:1 ;
+  display: flex;
+  flex-direction: column;
+}
+.order-call{
+
+  picture,
+  source,
+  img{
+    width: 10px;
+    height: 10px;
+    margin-right: 3px;
+  }
+
+}
+
+:root{
+  --font-family-Circe:"Geometria";
+}
+.blow-text{
+  color: #3257A4 !important;
+  font-family: Geometria;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+.blow-button{
+  flex-shrink: 0;
+  color: $white_color;
+  background: linear-gradient(122deg, rgba(58,67,180,1) 42%, rgb(115, 115, 222) 50%, rgba(58,67,180,1) 60%);
+  border-radius: 5px;
+  box-shadow: 0px 0px 2px 0px #1A3E8B, 0px 0px 2px 0px rgba(0, 0, 0, 0.25) inset;
+
+  &:focus{}
+  &:hover{}
+  &:active{
+    color: $color_active_link;
+    background: $white_color;
+    box-shadow: 0px 0px 2px 0px rgba(73, 122, 226, 0.20), 0px 0px 2px 0px rgba(0, 0, 0, 0.25) inset;
+
+  }
+}
+.white-button{
+  color: $color_active_link;
+  background: $white_color;
+  box-shadow: 0px 0px 2px 0px rgba(73, 122, 226, 0.20), 0px 0px 2px 0px rgba(0, 0, 0, 0.25) inset;
+  &:focus{}
+  &:hover{}
+  &:active{
+    color: $white_color;
+    background: linear-gradient(122deg, rgba(58,67,180,1) 42%, rgb(115, 115, 222) 50%, rgba(58,67,180,1) 60%);
+  }
+
+}
+a,a:visited{
+  color:inherit;
+}
+.score{
+  right: 5px;
+
+  display: flex;
+}
+.shadow{
+  box-shadow: inset 0px 0px 3px rgba(50, 87, 164, 0.25);
+
+  &:hover{
+    box-shadow: 0px 0px 3px 0px rgba(50, 87, 164, 0.25) inset,5px 5px 20px rgba(50, 87, 164, 0.25);
+  }
+  @include media-not-hover{
+    &:active{
+      box-shadow: 0px 0px 3px 0px rgba(50, 87, 164, 0.25) inset,5px 5px 20px rgba(50, 87, 164, 0.25);
+
+    }
+  }
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+p{
+  font-family: Geometria;
+  font-style: normal;
+  font-weight: normal;
+}
+.container {
+  max-width: 1440px;
+  width: 100%;
+  padding: 0px 7.2%;
+  margin: auto;
+  @include media-phones375max {
+    padding:20px 19px;
+  }
+  &_contact{
+    max-width: 1020px;
+
+  }
+}
+
+main{
+  flex-grow: 1;
+}
+h2{
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+}
+.button-blow-big{
+  width: 58px;
+  height: 58px;
+  border-radius:100% ;
+  picture,
+  source,
+  img{
+    width: 100%;
+    object-position: center;
+  }
+  &:focus{
+    outline: 3px #ffffff solid;
+  }
+
+  &:active{
+    outline: none;
+    transform: scale(1.1);
+    transpose:.3s;
+  }
+}
+
+.custom-checkbox{
+  input{
+    position: absolute;
+    opacity: 0;
+    display: none;
+  }
+  & label{
+    position: relative;
+  }
+  & label:before {
+    content: '';
+    border: 0.5px solid #3257A4;
+    background: #FFF;
+    position: absolute;
+    transform: translateY(-50%);
+
+  }
+
+  & :checked+label::before {
+    background: #3257A4;
+  }
+
+}
+
+.button-not-background {
+  background: none;
+  display: flex;
+  gap: 10px;
+}
+.video-review{
+  border-radius: 15px;
+  border: 1px solid #3257A4;
+  background: #FFF;
+}
+#map{
+  margin: auto;
+  overflow: hidden;
+  max-height: 491px;
+  height: 100vw;
+  width: 100%;
+  border-radius: 15px;
+  border: 2px solid #497AE2;
+}
+.map__button{
+  float: right;
+}
+.spinner-border{
+
+}
+.upper-text{
+  text-transform: uppercase;
+}
+
+.spinner{
+  border-radius: 100%;
+  border-top: 1px solid;
+  width: 1vw;
+  height: 1vw;
+  margin: 2% auto;
+  span{
+    display: none;
+  }
+  animation:animation_rotate 1s normal infinite ;
+
+}
+.error{
+  color: red;
+}
+

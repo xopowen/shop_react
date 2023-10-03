@@ -1,79 +1,112 @@
 import React from 'react';
 import {
-    BrowserRouter as Router,
     Route,
-    Link, BrowserRouter, Routes,
+    BrowserRouter, Routes,
 } from 'react-router-dom';
 
 import ReactDOM from 'react-dom/client';
 import './index.scss';
 import reportWebVitals from './reportWebVitals';
-import Sections from "./components/main/sections";
-import Manufactore from "./components/main/manufactore";
-import News from "./components/main/news";
+
+import News from "./components/main/news/News";
 import Home from "./src/home";
-import News_article from "./components/main/News_article";
+
 import {Layout} from "./components/layout/layout";
-import Catalog_ptoducts from "./src/catalog_ptoducts";
-import SectionsCatalig from "./components/main/SectionsCatalig";
 
 
-const IMAGE_INLINE_SIZE_LIMIT = 0
-export const CLASS_IMG = 'rubber-img'
+import Manufacture from "./components/main/manufacture/Manufacture";
+import Catalogs from "./components/main/catalogs/Catalogs";
+import NewsArticle from "./components/main/news/NewsArticle";
+import Requisites from "./src/Requisites";
+import Events from "./components/main/events/Events";
+import Contacts from "./src/Contacts";
+import Payments from "./src/Payments";
+import Delivery from "./src/Delivery";
+import FormOrderCallback from "./components/formComponents/forms/FormOrderCallback";
+import CatalogProducts from "./src/CatalogPtoducts";
+import ProductItemPage from "./src/ProductItemPage";
+import Basket from "./src/Basket";
+import SendOrder from "./src/SendOrder";
+import Login from "./src/Login";
+import PrivateRoute from "./my-route/PrivateRoute";
+import Logout from "./src/Logout";
+import Profile from "./src/Profile";
+import Registration from "./src/Registration";
+import Compare from "./src/Compare";
+import CompareCatalog from "./src/CompareCatalog";
+import UserOrders from "./components/main/profile/UserOrders";
+import UserFeedBacks from "./components/main/profile/UserFeedBacks";
+import Page404 from "./src/Page404";
+import OrderSuccessfullyCompleted from "./src/OrderSuccessfullyCompleted";
 
-const MAIN_REQUEST_SERFER = 'http://127.0.0.1:8000'
-function sendPequest(url,method, body= null){
-    const headers = {
-        'Content-Type':"application/json"
-    }
-    return fetch(url,
-        {
-            method:method,
-            body:JSON.stringify(body),
-            headers:headers
-        }).then(response=>{
-        //обработка ошибок
-        if(response.ok){
-            return response.json()
-        }else {
-            //можно реализовать свою логику
-            return response.json().then(errors=>{console.error(errors)})
-        }
-    })
-}
+
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
+
 root.render(
-  <React.StrictMode>
+    <React.StrictMode>
+        <React.StrictMode>
       <BrowserRouter>
           <Routes>
               <Route path ={'/'} element={<Layout/>}>
                   <Route index element={<Home/>}/>
-                  <Route path ={'manufactores'} element={ <Sections head={'Производители'} >
-                      <Manufactore/>
-                  </Sections>}/>
-                  <Route path ={'news'} element={ <Sections >
-                                                      <News/>
-                                                  </Sections>}>
-                  </Route>
-                  <Route path={'news/:id'} element={<News_article/>}/>
-                  <Route path = {'catalog/'} element={<Sections head = {'Медицинское оборудование'} >
-                                               <SectionsCatalig  head = {'Медицинское оборудование'}/>
-                                                     </Sections>}/>
-                  <Route path ={'catalog/:catalogId'} element={ <><Catalog_ptoducts/> </>} />
-                  <Route path ={'catalog/:catalogId/:start-filter'} element={ <><Catalog_ptoducts/> </>} />
-                  <Route path ={'*'} element={<Sections > </Sections>}/>
+                  <Route path ={'news/'} element={ <News head = {'Новости'} /> }/>
+                  <Route path={'news/:id/'} element={<NewsArticle/>}/>
+                  <Route path ={'manufactures/'} element={ <Manufacture head = {"Производители"}/> }/>
+                  <Route path ={'manufactures/:name/'} element={ <CatalogProducts/> }/>
+                  <Route path = {'catalogs/'} element={  < Catalogs  head = {'Медицинское оборудование'}/>}/>
+                  <Route path ={'catalogs/:name/'} element={ <CatalogProducts/> }/>
+                  <Route path ={'catalogs/:catalogName/:productID/'} element={<ProductItemPage/>}/>
+                  <Route path = {'requisites/'} element={  <Requisites head={'Реквизиты'}/>}/>
+                  <Route path = {'about-company/'} element={<Events head={'О компании'}/>}/>
+                  <Route path = {'request-call-back-page/'} element={<FormOrderCallback/>}/>
+                  <Route path = {'contacts/'} element={<Contacts head = {'Контакты'}/>}/>
+                  <Route path = {'payment/'} element={<Payments head = {'Оплата заказа'}/>}/>
+                  <Route path = {'delivery/'} element={<Delivery head = {'Доставка заказа'}/>}/>
+                  <Route path = {'logout/'} element={<Logout/>}/>
+                  <Route path = {'login/'} element={<Login/>}/>
+                  <Route path = {'registration/'} element={<Registration/>}/>
+
+                  <Route path ={'set-order/'} element={
+                      <PrivateRoute>
+                         <SendOrder head={'Оформление заказа'}/>
+                      </PrivateRoute>}
+                          />
+
+                  <Route path ={'basket/'} element={<PrivateRoute>
+                      <Basket head={'Бренды и заводы производители'}/>
+                      </PrivateRoute>}/>
+                  <Route path = {'personal-area/'} element={<PrivateRoute>
+                          <Profile head = {'Мой профиль'}/>
+                      </PrivateRoute>}/>
+                  <Route path = {'personal-area/orders/'} element={<PrivateRoute>
+                      <UserOrders head={'Заказы'}/>
+                  </PrivateRoute>}/>
+
+                  <Route path = {'personal-area/feedbacks/'} element={<PrivateRoute>
+                      <UserFeedBacks head={'Отзывы'}/>
+                  </PrivateRoute>}/>
+
+
+                  <Route path = {'comparisons/'} element={
+                      <PrivateRoute>
+                          <Compare head = {'Сравнение товаров'} />
+                      </PrivateRoute>}/>
+                  <Route path = {'comparisons/:catalogName/'} element={
+                      <PrivateRoute>
+                          <CompareCatalog/>
+                      </PrivateRoute>}/>
+                  <Route path ={'404/'} element={<Page404/>}/>
+                  <Route path = {'order-successfully-completed/'} element={<OrderSuccessfullyCompleted/>}/>
+                  <Route path ={'*'}    element={<Page404/>}/>
               </Route>
 
           </Routes>
 
     </BrowserRouter>
   </React.StrictMode>
-
+    </React.StrictMode>
 );
 
 reportWebVitals();
-
-export default sendPequest
-export {MAIN_REQUEST_SERFER}

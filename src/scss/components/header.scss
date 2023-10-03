@@ -1,0 +1,155 @@
+
+.header {
+  position: relative;
+  //max-width: 1230px + 105*2;
+  //width: 100%;
+  //position: fixed;
+  background: white !important;
+  padding: 16px 7.2%;
+  z-index: 50;
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+
+
+ &__top{
+   display: flex;
+   justify-content: space-between;
+   align-items: center;
+   gap: 10px;
+ }
+ picture,
+   source,
+   img{
+   max-width: 100%;
+   object-fit: contain;
+ }
+
+  &__img{
+    height: 33px;
+    width: 145px;
+  }
+
+  // .header__catalog
+  &__catalog {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    gap: 6px;
+      picture,
+        source,
+        img{
+        width: 20px;
+      }
+  }
+
+  // .header__search
+  &__search {
+    position: relative;
+    display: flex;
+    align-content: center;
+    width: 314px;
+    height: 36px;
+    align-items: center;
+    padding: 0px 17px;
+    gap: 10px;
+
+    background: #FFFFFF;
+    box-shadow: inset 0px 0px 3px rgba(50, 87, 164, 0.25);
+    border-radius: 10px;
+    & input{
+      width: 100%;
+      border: none;
+      outline: none;
+      &:focus{   outline: none;}
+      &:hover{     outline: none;}
+      &:active{    outline: none;}
+    }
+      picture,
+        source,
+        img{
+        cursor: pointer;
+        width: 13px;
+        height: 13px;
+      }
+  ul{
+    position: absolute;
+    bottom: 0;
+    transform: translateY(100%);
+    width: 100%;
+    margin: 0 -17px;
+    z-index: 50;
+    background: #FFFFFF;
+    padding: 17px;
+    box-shadow: inset 0px 0px 3px rgba(50, 87, 164, 0.25);
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    max-height: 500px;
+    overflow: auto;
+    &:empty{
+      display: none;
+    }
+
+    li{
+      padding: 5px;
+      &:hover{
+        box-shadow: inset 0px 0px 3px rgba(50, 87, 164, 0.25);
+      }
+    }
+    .not-hover{
+      &:hover{
+        box-shadow:none;
+      }
+    }
+  }
+
+  }
+
+  // .header__order-call
+  &__order-call {
+    text-decoration-line: underline;
+    &:hover{
+      text-decoration-line: none;
+    }
+    @include media-not-hover{
+      &:active{
+        text-decoration-line: none;}
+    }
+  }
+
+  // .header__network
+  &__network {
+    display: flex;
+    gap: 5px;
+      picture,
+        source,
+        img{
+        width: 21px;
+        height: 21px;
+      }
+    @include media-phones375max{
+      display: none;
+    }
+  }
+
+  address{
+    display: flex;
+    flex-wrap: wrap;
+    white-space: nowrap;
+    column-gap: 33px;
+    justify-content: center;
+    picture,
+    source,
+    img{
+      width: 10px;
+      height: 10px;
+      margin-right: 3px;
+    }
+    @include media-portrait767max{
+      display: none;
+    }
+  }
+
+}

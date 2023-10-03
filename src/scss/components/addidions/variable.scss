@@ -1,0 +1,130 @@
+$products_catalog_body-max-height: 149px*2 + 12px*2 + 15px;
+
+//чёрный цвет
+$black_color:black;
+
+//серый цвет
+$gray_color:#6B6B6C;
+//булый цвет
+$white_color:#FFFFFF;
+
+$body_back_color:#F7F9FB;
+//main_color
+$main_color:#474747;
+
+$max_width:1280px;
+
+$color_active_link:blue;
+$card_color:#111;
+$color_head_sction:#3257A4;
+$color_blue_497AE2:#497AE2;
+
+$color_blue_3257A4:#3257A4;
+
+%head_card{
+  font-family: Geometria;
+  font-size: calc(min(5vw,28px));
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+}
+%head_card_small{
+  font-family: Geometria;
+  font-size: calc(min(4vw,18px)) ;
+  font-style: normal;
+  line-height: 50px;
+  font-weight:bold ;
+}
+$color-parice-card:red;
+$color-basket-card-amt-button:#C41C1B;
+
+%head_card_new{
+  font-family: Geometria;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+}
+%head_card_product{
+  font-family: Geometria;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  text-transform: capitalize;
+}
+
+%head_card_product_price{
+  font-family: Geometria;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+}
+%head_section{
+  text-align: center;
+  font-family: Geometria;
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+}
+
+%text_under_button_form{
+  font-family: Geometria;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+%text_link_forgetting_password{
+  font-family: Geometria;
+  font-size: 10px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+%basket-card-title{
+  font-family: Geometria;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  text-transform: capitalize;
+}
+%font-check{
+  font-family: Geometria;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+%font-filter-h5{
+  font-family: Geometria;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+%font-tablets-item{
+  font-family: Geometria;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+%font-event-h5{
+  font-family: Geometria;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+}
+%font-compare-catalog-name{
+  font-family: Geometria;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  text-transform: uppercase;
+}

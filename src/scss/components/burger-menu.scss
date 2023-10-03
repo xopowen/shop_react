@@ -1,0 +1,72 @@
+
+.burger-menu {
+  position: absolute;
+  background: $white_color;
+  border-radius: 0px 0px 45px 45px;
+  overflow: hidden;
+  width: calc(min(85vw,1240px));
+  margin-right: 7.2%;
+  display: none;
+  grid-template-columns: 40% auto;
+  z-index: 150;
+  top: 70px;
+
+  &_active{
+    display: grid;
+  }
+
+  @include media-phones375max{
+    grid-template-columns: auto auto;
+  }
+  // .Popup-menu__catalog
+  &__catalog {
+    background: #497AE2;
+    color: #FFFFFF;
+    padding: 5% 0% 8%;
+  }
+  &__item {
+    height: 53px;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+  }
+  // .Popup-menu__item
+  &__catalog &__item {
+
+    padding-left: 7%;
+    border-right: 1px solid #3257A4;
+    &:hover{
+      color: blue;
+      background: white;
+    }
+    @include media-not-hover{
+      &:active{
+        color: blue;
+        background: white;
+      }
+    }
+
+  }
+
+  &__start-filter{
+    font-family: 'Geometria';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 20px;
+  }
+
+  &__start-filter &__item {
+    padding-left: 10%;
+    &:hover{
+      color: blue;
+    }
+    @include media-not-hover{
+      &:active{
+        color: blue;
+      }
+    }
+  }
+
+}
+.Popup-menu__item a:link, .Popup-menu__item a:visited   { color: inherit }

@@ -1,0 +1,57 @@
+
+
+.feedback {
+  justify-content: space-between;
+  gap: 20px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+
+
+  @include media-phones375max{
+    grid-template-columns: 1fr;
+  }
+  // .feedback__card
+  &__card {
+
+  }
+}
+
+.feed-back-card {
+  border-radius: 15px;
+  background: #FFF;
+  box-shadow: 0px 1px 5px 0px rgba(50, 87, 164, 0.25) inset;
+  padding: calc(min(4%,25px));
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  // .feed-back-card__header
+  &__header {
+    display: flex;
+    position: relative;
+  }
+
+  // .feed-back-card__name
+  &__name {
+  }
+
+  // .feed-back-card__score
+  &__score {
+    @extend .card-product__score;
+    right: 0;
+    top:0;
+      picture,
+        source,
+        img{
+        width: 21px;
+        height: 23px;
+      }
+  }
+
+  // .feed-back-card__text
+  &__text {
+    max-height: 119px;
+    overflow: auto;
+    text-overflow: ellipsis;
+    word-wrap: anywhere;
+  }
+}

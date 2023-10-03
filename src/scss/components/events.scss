@@ -1,0 +1,162 @@
+
+
+.events {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  justify-content: center;
+  // .events__card
+  &__card {
+
+  }
+}
+
+.event-card {
+  border-radius: 15px;
+  border: 0.2px solid #EFF5FE;
+
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+
+  background: #FFF;
+  box-shadow: 0px 0px 3px 0px rgba(50, 87, 164, 0.25) inset;
+  padding: 37px 40px;
+  max-width: 390px;
+  max-height: 443px;
+  @extend .shadow;
+  & > picture,
+  & > source,
+  & > img{
+    max-width: 311px;
+    max-height: 311px;
+    border-radius: 15px;
+    overflow: hidden;
+    object-fit: cover;
+  }
+
+  h5{
+    @extend %font-event-h5;
+    cursor: pointer;
+  }
+
+  // .event-card_book
+  &_book {
+    display: none;
+    max-height: 557px;
+    padding: 52px 42px;
+    flex-direction: row;
+    flex-wrap: wrap;
+    max-width: none;
+    width: max-content;
+      picture,
+        source,
+        img{
+        max-width: 453px;
+        max-height: 453px;
+      }
+
+
+  }
+
+  // .event-card_article
+  &_article {
+    display: none;
+    max-width: none;
+    max-height: none;
+    .event-card__body{
+      flex-direction: row;
+      gap: 42px;
+    }
+    h2{
+      color: $color_blue_497AE2;
+      @extend %head_section;
+      text-align: left;
+    }
+  }
+  &__container{
+    position: absolute;
+    left: 50%;
+    top: 20%;
+    width: 100%;
+    max-width: 1230px;
+    padding: 2%;
+    transform: translateX(-50%);
+    display: none;
+    z-index: 100;
+    &_active{
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+  }
+  &_active{
+    display: flex;
+  }
+  &_article,&_book{
+    .event-card__body {
+      flex-direction: column;
+    }
+  }
+
+  // .event-card__body
+  &__body {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+  }
+
+  // .event-card__button
+  &__button {
+    @extend .slider__navigation ;
+    width: 30px;
+    height: 29.268px;
+  }
+
+  // .event-card__back
+  &__back {
+    position: relative;
+    padding-left: 10px;
+    align-self: start;
+    &:before{
+      content: "<";
+      left: 0;
+      position: absolute;
+      top:50%;
+      transform: translateY(-50%);
+    }
+  }
+
+  // .event-card__footer
+  &__footer {
+    button{
+      width: 204px;
+      height: 47px;
+    }
+  }
+
+
+
+  // .event-card__img-list
+  &__img-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 24px;
+    justify-content: center;
+    picture,
+    source,
+    img{
+      width: 100%;
+      max-width: 345px;
+      max-height: 345px;
+      object-fit: cover;
+    }
+  }
+  &__img{
+    border-radius: 15px;
+    border: 1px solid $color_blue_497AE2;
+    overflow: hidden;
+  }
+}

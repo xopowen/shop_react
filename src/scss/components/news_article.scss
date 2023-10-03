@@ -1,0 +1,46 @@
+.news-article {
+display: flex;
+  flex-direction: column;
+  row-gap: 53px;
+  // .Article__head
+  &__head {
+
+  }
+
+  &__right{
+    picture,
+    source,
+    img{
+
+      object-fit: cover;
+      float: right;
+      margin: 1% 0 1% 8% ;
+    }
+  }
+  &__left{
+    picture,
+    source,
+    img{
+      object-fit: cover;
+      float: left;
+      margin: 1% 8% 1% 0 ;
+    }
+  }
+
+  &__item {
+    overflow: hidden;
+    p{
+      margin-top: 2%;
+    }
+  }
+
+
+  &__footer {
+    margin-top: 6%;
+    color: red;
+    display: flex;
+    justify-content: end;
+    gap: 20px;
+  }
+}
+

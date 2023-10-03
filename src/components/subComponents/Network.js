@@ -1,19 +1,16 @@
 import React from "react";
-import viber from "../../img/viber .png";
-import viber_wemb from "../../img/wemb/viber .webp";
-import telegram from "../../img/telegram .png";
-import telegram_wemb from "../../img/wemb/telegram .webp";
-import whatsapp from "../../img/whatsapp .png";
-import whatsapp_wemb from "../../img/wemb/whatsapp .webp";
-import PictureMecsin from "../subComponents/PictureMecsin";
 
-
-export default function Network (){
-     return   <div className="header_network network">
-        <PictureMecsin id={'viber'} class_img = {"rubber-img"} linkImg = {viber} linkImgWebp = {viber_wemb}/>
-        <PictureMecsin  id={'telegram'} class_img = {"rubber-img"} linkImg = {telegram} linkImgWebp = {telegram_wemb}/>
-        <PictureMecsin id={'whatsapp'} class_img = {"rubber-img"} linkImg = {whatsapp} linkImgWebp = {whatsapp_wemb}/>
-    </div>;
+//img
+import github  from "../../img/icons/github-mark.svg";
+import telegram from "../../img/icons/telegram.svg";
+import   IconVk   from '../../img/icons/vk-com.svg';
+export default function Network (props){
+    // статическая информация о ссылках на аккаунты социальные сети
+     return   <article {...props}>
+         <a href="https://github.com/xopowen" title={'github'}><img src = {github} id={'github'}   /></a>
+         <a href="https://www.t.me/xopowen" title={'telegram'}><img src = {telegram} id={'telegram'} /></a>
+         <a href="#" title={'vk'}><img src = {IconVk} id={'vk'} /></a>
+    </article>;
 }
 
 

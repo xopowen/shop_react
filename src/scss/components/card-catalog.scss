@@ -1,0 +1,144 @@
+@import "addidions/variable";
+.card-catalog {
+  display: flex !important;
+  justify-content: space-between;
+  background: white;
+  overflow: hidden;
+  max-height: 620px;
+  height: max-content;
+  color: $card_color;
+  font-size: 18px;
+
+  // .card-catalog__body
+  &__body {
+    padding:6% 4%;
+    align-self: center;
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+    max-width: 455px;
+    width: max-content;
+    .card-catalog_small{
+      margin: 38px 5%;
+      align-self: flex-start;
+    }
+    @include media-phones375max{
+      align-items: center;
+    }
+  }
+
+  // .card-catalog__banner
+  &__banner {
+    align-self: flex-start;
+  }
+
+  // .card-catalog__header
+  &__header {
+    display: flex;
+    flex-direction: column;
+    gap: 11px;
+
+
+  }
+
+  // .card-catalog__head
+  &__head {
+    @extend %head_card;
+  }
+
+  // .card-catalog__subtext
+  &__subtext {
+    max-width: 320px;
+
+  }
+
+  // .card-catalog__fooder
+  &__footer {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 14px;
+    @include media-phones375max{
+      width: min-content;
+      justify-content: center;
+    }
+  }
+
+  // .card-catalog__img
+  &__img {
+    position: center;
+
+      picture,
+        source,
+        img{
+        width: 100%;
+        object-fit: scale-down;
+      }
+    &_small {}
+
+  }
+
+
+  &_big {
+    border-radius: 45px;
+    max-width: 1230px;
+    padding: 32px;
+    margin: auto;
+    @include media-phones375max{
+      flex-wrap: wrap-reverse;
+      padding: 15px;
+    }
+    .card-catalog__img{
+      flex-grow: 1;
+      bottom: -30px;
+
+      picture,
+      source,
+      img{
+        border-radius: 15px;
+        width: 100%;
+        object-fit: scale-down;
+      }
+    }
+    & .blow-button{
+      width: 223.188px;
+      height: 41px;
+    }
+
+  }
+  &_small{
+    @extend .shadow;
+    max-width: 396px;
+    border-radius: 15px;
+    height: 149px;
+    &:first-child{
+      height: auto !important;
+      grid-row-end: span 2;
+      .card-catalog__body_small{
+        width: 50%;
+      }
+      .card-catalog__img_small{
+        align-self: end;
+      }
+    }
+
+    .card-catalog__head{
+      @extend %head_card_small;
+      text-transform: uppercase;
+    }
+    .card-catalog__header{
+      gap: 0;
+    }
+    .card-catalog__body{
+      align-self: start;
+    }
+    .card-catalog__img{
+      align-self: end;
+    }
+
+
+
+  }
+
+
+
+}

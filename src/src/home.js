@@ -1,31 +1,20 @@
 import React from "react";
-import Header from "../components/header/header";
-import Main_slaider from "../components/main/main_slaider";
-import Sections from "../components/main/sections";
-import SlaiderPoducts from "../components/main/slaider-poducts";
-import Manufactore from "../components/main/manufactore";
-import News from "../components/main/news";
-import SectionsCatalig from "../components/main/SectionsCatalig";
+
+import MainSlider from "../components/main/main-slider/MainSlider";
+import Catalogs from "../components/main/catalogs/Catalogs";
+import SliderProducts from "../components/main/product-slider/SliderProducts";
+import Manufacture from "../components/main/manufacture/Manufacture";
+import News from "../components/main/news/News";
+
 
 
 export default function Home(props){
 
     return<>
-
-        <Main_slaider/>
-        <Sections head = {'Медицинское оборудование'} >
-            <SectionsCatalig  head = {'Медицинское оборудование'}/>
-        </Sections>
-        <Sections head ={'Новинки'}>
-            <SlaiderPoducts  head ={'Новинки'}/>
-        </Sections>
-        <Sections head ={'Бренды и заводы производители'} addlClass = 'sections__full'>
-            <Manufactore/>
-        </Sections>
-        <Sections head = {'Последние новости '}>
-            <News/>
-        </Sections>
-
-
+        <MainSlider/>
+        <Catalogs  head = {'Медицинское оборудование'}/>
+        <SliderProducts  head = {'Новинки'}/>
+        <Manufacture head = {'Бренды и заводы производители'} />
+        <News head = {"Последние новости"}/>
     </>
 }
