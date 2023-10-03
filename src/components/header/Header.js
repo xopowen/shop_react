@@ -40,7 +40,7 @@ export default function Header(props){
                 <button className="button-not-background " >
                     <PictureMixin img = {menu} onClick={e =>haveShowBurgerMenu(!showPopupMenu) } />
                 </button>
-                <Link to={'catalogs/'} className="upper-text blow-text" >каталог</Link>
+                <Link to={'catalogs'} className="upper-text blow-text" >каталог</Link>
             </div>
 
             <Search/>

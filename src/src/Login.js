@@ -7,6 +7,7 @@ import FieldInput from "../components/formComponents/FieldInput";
 import authStore from "../components/mbox/AuthStore";
 import {observer} from "mobx-react-lite";
 import stateBasket from "../components/mbox/BasketState";
+import clientState from "../components/mbox/ClientState";
 
 let Login = observer( (props)=>{
     /*

@@ -25,7 +25,7 @@ export default function CatalogItem({data}){
                 <h3 className="card-catalog__head">
                     {data.name}
                 </h3>
-                <Link to={`${location.pathname=== "/" ? '/catalogs/' : location.pathname }${data.name}/`} className="card-catalog__subtext blow-text">
+                <Link to={`${location.pathname=== "/" ? '/catalogs/' : location.pathname +"/" }${data.name}`} className="card-catalog__subtext blow-text">
                     перейти в каталог
                 </Link>
             </div>

@@ -1,7 +1,5 @@
 import React   from "react";
 
-
-import PictureMixin from "../helpFunction/PictureMixin";
 import Network from "../subComponents/Network";
 import {Link} from "react-router-dom";
 import SubMenu from "../header/SubMenu";
@@ -63,7 +61,7 @@ export default function Footer(props){
             </div>
 
         <div className="footer__button-blow">
-            <Link to={'/request-call-back-page/'} className="button-blow-big">
+            <Link to={'/request-call-back-page'} className="button-blow-big">
                 <img src={phone_big} alt="phone"/>
             </Link>
             <button onClick={haveScrollDoUp} className="button-blow-big">

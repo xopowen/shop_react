@@ -51,54 +51,55 @@ root.render(
           <Routes>
               <Route path ={'/'} element={<Layout/>}>
                   <Route index element={<Home/>}/>
-                  <Route path ={'news/'} element={ <News head = {'Новости'} /> }/>
-                  <Route path={'news/:id/'} element={<NewsArticle/>}/>
-                  <Route path ={'manufactures/'} element={ <Manufacture head = {"Производители"}/> }/>
-                  <Route path ={'manufactures/:name/'} element={ <CatalogProducts/> }/>
-                  <Route path = {'catalogs/'} element={  < Catalogs  head = {'Медицинское оборудование'}/>}/>
-                  <Route path ={'catalogs/:name/'} element={ <CatalogProducts/> }/>
-                  <Route path ={'catalogs/:catalogName/:productID/'} element={<ProductItemPage/>}/>
-                  <Route path = {'requisites/'} element={  <Requisites head={'Реквизиты'}/>}/>
-                  <Route path = {'about-company/'} element={<Events head={'О компании'}/>}/>
-                  <Route path = {'request-call-back-page/'} element={<FormOrderCallback/>}/>
-                  <Route path = {'contacts/'} element={<Contacts head = {'Контакты'}/>}/>
-                  <Route path = {'payment/'} element={<Payments head = {'Оплата заказа'}/>}/>
-                  <Route path = {'delivery/'} element={<Delivery head = {'Доставка заказа'}/>}/>
-                  <Route path = {'logout/'} element={<Logout/>}/>
-                  <Route path = {'login/'} element={<Login/>}/>
-                  <Route path = {'registration/'} element={<Registration/>}/>
+                  <Route path ={'news'} element={ <News head = {'Новости'} /> }/>
+                  <Route path={'news/:id'} element={<NewsArticle/>}/>
+                  <Route path ={'manufactures'} element={ <Manufacture head = {"Производители"}/> }/>
+                  <Route path ={'manufactures/:name'} element={ <CatalogProducts/> }/>
+                  <Route path = {'catalogs'} element={  < Catalogs  head = {'Медицинское оборудование'}/>}/>
+                  <Route path ={'catalogs/:name'} element={ <CatalogProducts/> }/>
+                  <Route path ={'catalogs/:catalogName/:productID'} element={<ProductItemPage/>}/>
+                  <Route path = {'requisites'} element={  <Requisites head={'Реквизиты'}/>}/>
+                  <Route path = {'about-company'} element={<Events head={'О компании'}/>}/>
+                  <Route path = {'request-call-back-page'} element={<FormOrderCallback/>}/>
+                  <Route path = {'contacts'} element={<Contacts head = {'Контакты'}/>}/>
+                  <Route path = {'payment'} element={<Payments head = {'Оплата заказа'}/>}/>
+                  <Route path = {'delivery'} element={<Delivery head = {'Доставка заказа'}/>}/>
+                  <Route path = {'logout'} element={<Logout/>}/>
+                  <Route path = {'login'} element={<Login/>}/>
+                  <Route path = {'registration'} element={<Registration/>}/>
 
-                  <Route path ={'set-order/'} element={
+                  <Route path ={'set-order'} element={
                       <PrivateRoute>
                          <SendOrder head={'Оформление заказа'}/>
                       </PrivateRoute>}
                           />
 
-                  <Route path ={'basket/'} element={<PrivateRoute>
+                  <Route path ={'basket'} element={<PrivateRoute>
                       <Basket head={'Бренды и заводы производители'}/>
                       </PrivateRoute>}/>
-                  <Route path = {'personal-area/'} element={<PrivateRoute>
+                  <Route path = {'personal-area'} element={<PrivateRoute>
                           <Profile head = {'Мой профиль'}/>
                       </PrivateRoute>}/>
-                  <Route path = {'personal-area/orders/'} element={<PrivateRoute>
+                  <Route path = {'personal-area/orders'} element={<PrivateRoute>
                       <UserOrders head={'Заказы'}/>
                   </PrivateRoute>}/>
 
-                  <Route path = {'personal-area/feedbacks/'} element={<PrivateRoute>
+                  <Route path = {'personal-area/feedbacks'} element={<PrivateRoute>
                       <UserFeedBacks head={'Отзывы'}/>
                   </PrivateRoute>}/>
 
 
-                  <Route path = {'comparisons/'} element={
+                  <Route path = {'comparisons'} element={
                       <PrivateRoute>
                           <Compare head = {'Сравнение товаров'} />
                       </PrivateRoute>}/>
-                  <Route path = {'comparisons/:catalogName/'} element={
+                  <Route path = {'comparisons/:catalogName'} element={
                       <PrivateRoute>
                           <CompareCatalog/>
                       </PrivateRoute>}/>
-                  <Route path ={'404/'} element={<Page404/>}/>
-                  <Route path = {'order-successfully-completed/'} element={<OrderSuccessfullyCompleted/>}/>
+
+                  <Route path = {'order-successfully-completed'} element={<OrderSuccessfullyCompleted/>}/>
+                  <Route path ={'404'} element={<Page404/>}/>
                   <Route path ={'*'}    element={<Page404/>}/>
               </Route>
 

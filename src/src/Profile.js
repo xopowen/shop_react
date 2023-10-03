@@ -20,11 +20,11 @@ let Profile = observer(({head})=>{
      * */
     let info = clientState.info
 
-    useEffect(()=>{
-        if(!authStore.isAuth)
-            clientState.clean()
-
-    },[authStore.isAuth])
+    // useEffect(()=>{
+    //     if(!authStore.isAuth)
+    //         clientState.clean()
+    //
+    // },[])
 
     function haveChangeInfo( form){
         let data = fromFormDataToDict(form)
@@ -37,26 +37,26 @@ let Profile = observer(({head})=>{
             <div className="sections__body profile">
                 {info && <FormChangeInfoUser onSubmit={haveChangeInfo}/>}
                 <section className="profile__catalog-events">
-                    <Link to="/personal-area/orders/">
+                    <Link to="/personal-area/orders">
                         <button className="white-button">
                             <img src={shopping_bag} title={'Заказы'}/>
                             <span>Заказы</span>
                         </button>
                     </Link>
 
-                    <Link to="/comparisons/">
+                    <Link to="/comparisons">
                         <button className="white-button">
                             <img src={reward} title={'Список сравнений'}/>
                             <span>Список сравнений</span>
                         </button>
                     </Link>
-                    <Link to="/personal-area/feedbacks/">
+                    <Link to="/personal-area/feedbacks">
                         <button className="white-button">
                             <img src={feedback} title={'Отзывы'}/>
                             <span>Отзывы</span>
                         </button>
                     </Link>
-                    <Link to="/logout/" title={"выход"}>
+                    <Link to="/logout" title={"выход"}>
                         <button className="white-button" >
                             <span>выход</span>
                         </button>

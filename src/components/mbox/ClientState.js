@@ -37,20 +37,19 @@ class ClientState{
       return  true
     }
 
-    async getInfo(){
+    getInfo(){
         // получение информации с сервера.
-        await ajaxFetch({
+        ajaxFetch({
          url:'/client-info/',
          method:'GET',
         }).then(response=>{
          let [ok,error] = response
          if(ok){
-
-                 ok.then(res=>{
-                     runInAction(()=>{
-                     this._info = res
-                 })
+             ok.then(res=>{
+                 runInAction(()=>{
+                 this._info = res
              })
+         })
          }
          if(error){
              runInAction(()=>{

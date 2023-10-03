@@ -32,9 +32,7 @@
     grid-template-columns: repeat(auto-fill,285px);
     justify-content: center;
     gap: 20px;
-    & .card-product{
-      align-self: baseline;
-    }
+
   }
 
   &__footer{

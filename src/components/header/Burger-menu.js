@@ -52,7 +52,7 @@ export default function BurgerMenu(props) {
         <ul className="burger-menu__catalog">
             {data.length > 0 && data.map((v  ) => {
                 return   <li key={v.id} onMouseEnter={()=>setActiveCatalog(v.id)} className="burger-menu__item">
-                    <Link to={'catalogs/' + v.name+'/'}
+                    <Link to={'catalogs/' + v.name}
                           state={v.name} >
                         {v.name}
                     </Link>
@@ -62,7 +62,7 @@ export default function BurgerMenu(props) {
         <ul className="burger-menu__start-filter">
             {activeData?.choices  && activeData.choices.filter(value =>value?.show_menu === true).map(
                 (v) => {return   <li key={v.id} className="burger-menu__item">
-                        <Link to={`${'catalogs/'}${activeData.name}/?${v.property.name}=${v.value}`}
+                        <Link to={`${'catalogs/'}${activeData.name}?${v.property.name}=${v.value}`}
                               state={{ startFilter: [v.property.name,v.value] }}
                         >
                             {v.value}

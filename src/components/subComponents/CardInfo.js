@@ -23,12 +23,18 @@ export default function CardInfo({data}){
     let [ref,isView] =  useIntObs({},true)
 
     let link;
-    if(location.pathname ==='/manufactures/'){
-        link = <Link to={`/manufactures/${data.name}/`} className="blow-text card-news__link-full">перейти в каталог </Link>
+    if(location.pathname ==='/manufactures'){
+        link = <Link to={`/manufactures/${data.name}`}
+                     className="blow-text card-news__link-full">
+                    перейти в каталог
+                </Link>
     }else{
-        link = <Link to={`/news/${data.id}/`} className="blow-text card-news__link-full">читать дальше </Link>
+        link = <Link to={`/news/${data.id}`}
+                     className="blow-text card-news__link-full">
+                    читать дальше
+                </Link>
     }
-    return    <article ref={ref} className={`${location.pathname !== '/manufactures/' ? 'news__card': ""} card-news `}>
+    return    <article ref={ref} className={`${location.pathname !== '/manufactures' ? 'news__card': ""} card-news `}>
 
         <PictureMixin img={data.img} className = {'appear'} alt={data?.name||' '}/>
         <div className="card-news__under-img appear">

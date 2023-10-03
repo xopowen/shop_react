@@ -21,7 +21,7 @@ let Manufacture = observer(({head}) => {
     const locations = useLocation()
     const data = stateManufacture.elements
 
-    let isPage = locations.pathname === '/manufactures/';
+    let isPage = locations.pathname === '/manufactures';
 
     let listElem = data && data.map((v, i) => {
         let Elem = isPage ? CardInfo : ManufactureCard;

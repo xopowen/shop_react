@@ -10,7 +10,7 @@ export default function SlideNavicationButton({direction,swiperItem=undefined}) 
      */
     const swiper = useSwiper() || swiperItem;
 
-    if ( direction == 'last') {
+    if ( direction === 'last') {
         return <button onClick={()=>swiper.slideNext()} className="slider__navigation slider__navigation_next">
             <PictureMixin   img={slideNext} />
         </button>

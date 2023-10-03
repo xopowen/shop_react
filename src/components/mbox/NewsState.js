@@ -54,12 +54,11 @@ class NewsState{
 
             return this._elements.find(v=>v.id === +id)
         }
-
-
     }
 
     next(){
-        this._getElements(this._next)
+
+        this._getElements('/news/'+this._next)
     }
 
 

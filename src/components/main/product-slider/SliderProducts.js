@@ -19,7 +19,7 @@ export default function SliderProducts(props){
     const ratioWindows  = useMemo(()=>{
         return Math.min(Math.round(window.screen.width/300),4)},
         [window.screen.width])
-    const swiperRef = useRef(null);
+    const swiperRef = useRef();
 
 
     useEffect(()=>{
@@ -39,23 +39,29 @@ export default function SliderProducts(props){
             Новинки
         </h2>
         <div className="sections__body swiper slider product-slider">
-            {cardItems.length > 0 && <Swiper
+
+            <Swiper
                 loop={true}
                 spaceBetween = {10}
                 slidesPerView= {ratioWindows}
                 ref = {swiperRef}
                 modules={Navigation}
+
                 className={" slider__container swiper-wrapper"}
                 >
-                    { cardItems.map((v)=>{
+                { cardItems.length > 0 &&  cardItems.map((v)=>{
 
-                        return <SwiperSlide key={v.id}>
-                            <ProductCard  data = {v} key={v.id}/>
-                        </SwiperSlide>}) }
+                    return <SwiperSlide key={v.id}>
+                        <ProductCard  data = {v} key={v.id}/>
+                    </SwiperSlide>}) }
 
-                </Swiper>}
+
+            </Swiper>
             <SlideNavicationButton swiperItem={swiperRef?.current?.swiper} direction={'pre'}/>
             <SlideNavicationButton swiperItem={swiperRef?.current?.swiper} direction={'last'}/>
+
+
+
 
         </div>
 

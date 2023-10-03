@@ -16,7 +16,7 @@ let News = observer(({head})=>{
     зависит от newsState.
     отображает карточки новостей.
 
-    *если location.pathname ==='/news/'
+    *если location.pathname ==='/news'
     будит загружать новые данные при
     приближении к отображённого спица концу списка.
     */
@@ -37,7 +37,7 @@ let News = observer(({head})=>{
             </div>
             <div className="sections__body news">
                 {data && data.map((v,i)=>{
-                    if(location.pathname ==='/news/'){
+                    if(location.pathname ==='/news'){
                         return <CardInfo key = {v.id} data={v}/>
                     }
                     if(i<3){
@@ -46,7 +46,7 @@ let News = observer(({head})=>{
             </div>
         {newsState.isLoading && <Spinner addClass={'spinner'}/>}
         </section>
-        {location.pathname ==='/news/' && <br ref={ref}/>}
+        {location.pathname ==='/news' && <br ref={ref}/>}
     </>
 })
 export default News;

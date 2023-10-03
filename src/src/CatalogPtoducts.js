@@ -34,7 +34,7 @@ export default function CatalogProducts() {
         }
 
         ajaxFetch( {
-            url: pathname+filter,
+            url: pathname+"/"+filter,
             method:'GET',
         }).then(response => {
             let [ok] = response

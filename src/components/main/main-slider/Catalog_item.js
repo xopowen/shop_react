@@ -36,7 +36,7 @@ export function Catalog_item(props) {
                 </p>
             </div>
             <div className="card-catalog__footer appear">
-                <Link to={`/manufactures/${data.manufacturer.name}/`}>
+                <Link to={`/manufactures/${data.manufacturer.name}`}>
                     <button className="blow-button">перейти в каталог</button>
                 </Link>
                 {props.children}

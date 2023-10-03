@@ -64,6 +64,7 @@ class AuthStore {
         runInAction(()=>{
             this.isAuthInProgress = true;
         })
+
         await ajaxFetch({
             url: '/dj-rest-auth/logout/',
             method: 'POST',

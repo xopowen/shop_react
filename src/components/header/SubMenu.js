@@ -35,17 +35,17 @@ export default function SubMenu(props){
     * */
 
 
-    let menu_list = [{number: 1, text: 'О компании',link: '/about-company/'},
-       {number: 2, text: 'Производители',link: '/manufactures/'},
-       {number: 3, text: 'Доставка',link: '/delivery/'},
-       {number: 4, text: 'Оплата',link: '/payment/'},
-       {number: 5, text: 'Новости',link: '/news/'},
-       {number: 6, text: 'Реквизиты',link: '/requisites/'},
-       {number: 7, text: 'Контакты',link: '/contacts/'}]
+    let menu_list = [{number: 1, text: 'О компании',link: '/about-company'},
+       {number: 2, text: 'Производители',link: '/manufactures'},
+       {number: 3, text: 'Доставка',link: '/delivery'},
+       {number: 4, text: 'Оплата',link: '/payment'},
+       {number: 5, text: 'Новости',link: '/news'},
+       {number: 6, text: 'Реквизиты',link: '/requisites'},
+       {number: 7, text: 'Контакты',link: '/contacts'}]
 
-    let menu_right = [{number: 1, img:compare, text: 'Сравнения',link: '/comparisons/'},
-       {number: 2, img:basket, text: 'Корзина',link:'/basket/'},
-       {number: 3,img:profile, text: 'Личный кабинет',link:'/personal-area/'}]
+    let menu_right = [{number: 1, img:compare, text: 'Сравнения',link: '/comparisons'},
+       {number: 2, img:basket, text: 'Корзина',link:'/basket'},
+       {number: 3,img:profile, text: 'Личный кабинет',link:'/personal-area'}]
 
 
 
@@ -62,10 +62,10 @@ export default function SubMenu(props){
 
                 { menu_right.length > 0 && menu_right.map(value => {
                     let nembeOverImg = undefined;
-                    if(value.link === '/basket/'){
+                    if(value.link === '/basket'){
                         nembeOverImg = <BasketSumAmt/>
                     }
-                    if(value.link === '/comparisons/'){
+                    if(value.link === '/comparisons'){
 
                         nembeOverImg = <CompareSumAmt/>
                     }

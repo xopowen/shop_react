@@ -58,7 +58,7 @@ export default function ProductCard({data}){
             <div className="card-product__header ">
                 <p className="card-product__act">{data?.act && data?.act}</p>
                 <h3 className="card-product__head head head_card">
-                    <Link to={`/catalogs/${data?.catalog.name}/${data?.id}/`}>{data.name}</Link>
+                    <Link to={`/catalogs/${data?.catalog.name}/${data?.id}`}>{data.name}</Link>
                 </h3>
             </div>
             <div className="card-product__body">
@@ -76,7 +76,7 @@ export default function ProductCard({data}){
                     }
                     {!loadStats && <>в корзину</> }
                 </button>
-                <Link to={`form-set-order/${data.id}/`}>
+                <Link to={`form-set-order/${data.id}`}>
                     <button className="white-button">
                         купить
                     </button>
