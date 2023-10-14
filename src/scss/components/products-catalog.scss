@@ -5,12 +5,16 @@
 &__body{
      padding: 15px;
      display: grid;
-     grid-template-columns: repeat(auto-fill,minmax(200px,376px-15));
+     grid-template-columns: repeat(auto-fill,minmax(200px,361px));
      max-height:$products_catalog_body-max-height;
      overflow-y: hidden;
      justify-content: center;
      gap: 12px;
-     margin: 2% 0px;
+     margin: 2% 0;
+     transition: 1s;
+  @include media-phones375max{
+    grid-template-columns: 1fr;
+  }
 
   &_active{
     animation: 5s linear 1 product-body-full forwards ;

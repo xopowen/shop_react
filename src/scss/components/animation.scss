@@ -38,7 +38,7 @@
 
 @keyframes product-body-full {
   0%{
-    max-height: 149px*2 + 12px*2;
+    max-height: $products_catalog_body-max-height;
   }
   100%{
     max-height: $products_catalog_body-max-height*10;

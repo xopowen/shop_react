@@ -12,7 +12,9 @@ $mask-card-wight:916;
   row-gap:11px;
 
   @include media-phones375max{
-    grid-template-columns: auto;
+    display: flex;
+    flex-direction: column-reverse;
+    gap: 10px;
   }
   // .basket__cards
   &__cards {

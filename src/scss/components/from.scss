@@ -49,6 +49,9 @@
 
     .form__header, .form__body, .form__footer{
       padding: 30px 10%;
+      @include media-phones375max{
+        padding: 10px 5%;
+      }
     }
 
     // .form__header
@@ -81,6 +84,7 @@
       row-gap: 30px;
       @include media-phones375max{
         grid-template-columns: auto;
+        row-gap: 10px;
       }
 
     }
@@ -104,9 +108,7 @@
     column-gap: calc(min(3vw,30px));
     row-gap: 30px;
     input[type=text],input[type=email],input[type=tel],input[type=password]{
-
       height: 63px;
-
     }
     input[type=text],input[type=email],input[type=tel],input[type=password],
     textarea{
@@ -147,6 +149,9 @@
       grid-row: span 5;
       grid-column-start: 2;
       padding: 30px 0;
+      @include media-phones375max{
+        grid-column-start: 1;
+      }
       textarea{
         height: 100%;
       }

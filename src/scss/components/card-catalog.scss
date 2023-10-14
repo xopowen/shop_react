@@ -111,12 +111,23 @@
     border-radius: 15px;
     height: 149px;
     &:first-child{
-      height: auto !important;
-      grid-row-end: span 2;
-      .card-catalog__body_small{
-        width: 50%;
+
+      @media screen  and (min-width: 760px){
+        height: auto;
+        grid-row-end: span 2;
+        .card-catalog__body{
+          width: 50%;
+        }
+          picture,
+            source,
+            img{
+            width: auto;
+            transform: translateX(-30%);
+          }
       }
-      .card-catalog__img_small{
+
+
+      .card-catalog__img{
         align-self: end;
       }
     }
