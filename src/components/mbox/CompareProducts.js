@@ -3,61 +3,87 @@ import ajaxFetch from "../helpFunction/ajaxFetch";
 
 import authStore from "./AuthStore";
 
+/**
+ * @class CompareProductsState
+ * @type {makeAutoObservable}
+ * @description хранит данные о товарах которые помещены для сравнения.
+ * @description собрал в себе все методы работы с этим функционалом.
+ */
 class CompareProductsState{
 
     _amt = undefined
     _catalogs = undefined
     _loading = false
     _products = undefined
-
     _productsListId = []
 
 
     constructor() {
-        /*
-        * хранит данные о товарах которые помещены для сравнения.
-        * собрал в себе все методы работы с этим функционалом.
-        *
-        *
-        * */
         makeAutoObservable(this)
     }
 
+    /**
+     * @getter
+     * @description идет ли загрузка какого либо ресурса.
+     * @return {boolean}
+     */
     get isLoading(){
         return this._loading
     }
 
+    /**
+     * @description количество товаров для сравнения.
+     * @description если данных нет получат информацию с сервера.
+     * @return {status<Number>}
+     */
     get amt(){
-        //количество товаров для сравнения.
+        //
         if(!this._amt){
             this._getAmt()
         }
         return this._amt
     }
 
+    /**
+     * @getter
+     * @description получение каталогов товаров которые сравниваются.
+     * @return {status<undefined | Array<Object>>}
+     */
     get catalogs(){
-        /* Каталоги товаров которые сравниваются.
-
-        * */
         if(!this._catalogs){
             this._getCompareCatalogs()
         }
-
         return this._catalogs
     }
 
+    /**
+     * @getter
+     * @description список сравнимых продуктов
+     * @return {status<undefined | Array<Object>>}
+     */
     get products(){
-        //список сравнимых продуктов
         return this._products
     }
+
+    /**
+     * @setter
+     * @param value
+     */
     set products(value){
         runInAction(()=>{
             this._products = value
         })
     }
 
+
+    /**
+     * @async
+     * @return {Promise<void>}
+     * @private
+     * @url  '/comparisons/amt/'
+     * @description получение количество товаров для сравнения с сервера.
+     */
     async _getAmt(){
-        // получение количество товаров для сравнения с сервера.   url:'/comparisons/amt/',
         runInAction(()=>{this._loading = true })
         await authStore.authAjaxFetch(ajaxFetch({
             url:'/comparisons/amt/',
@@ -74,14 +100,21 @@ class CompareProductsState{
              runInAction(()=>{ this._loading = false})
         })
     }
+
+    /**
+     * @async
+     * @return {Promise<void>}
+     * @private
+     * @url '/comparisons/'
+     * @description получение списка каталогов у товаров которые сравниваются.
+     */
     async _getCompareCatalogs(){
-        //получение списка каталогов товаров.  url:'/comparisons/',
         runInAction(()=>{this._loading = true })
         await ajaxFetch({
             url:'/comparisons/',
             method:"GET"
         }).then(response=>{
-            let [ok,error]= response
+            let [ok,]= response
             if(ok){
                 ok.then(res=> runInAction(()=>{ this._catalogs = res}) )
                 this._getAmt()
@@ -90,8 +123,18 @@ class CompareProductsState{
              runInAction(()=>{ this._loading = false})
         })
     }
+
+
+    /**
+     * @async
+     * @param product_id
+     * @return {Promise<void>}
+     * @description добавить товар в список для сравнения если его там ещё нет.
+     * @description если товар добавлен -> стираются данные о каталогах
+     * чтобы их можно было запросить снова.
+     * @url `/comparisons/add/`
+     */
     async addToCompare(product_id){
-        //добавить товар в список для сравнения
         if(!this.checkProductToCompare(product_id)) {
             runInAction(()=>{this._loading = true })
             await ajaxFetch({
@@ -99,11 +142,11 @@ class CompareProductsState{
                 method:'POST',
                 data:JSON.stringify({'product_id':product_id})
             }).then(response=>{
-                let [ok,error] = response
+                let [ok,] = response
                 if(ok){
                     runInAction(()=>{
                         this._productsListId.push(product_id)
-                        this._getAmt()
+                        this._amt+=1;
                         this._catalogs = undefined
                     })
                 }
@@ -113,8 +156,15 @@ class CompareProductsState{
             })
         }
     }
+
+    /**
+     * @async
+     * @param product_id
+     * @return {Promise<void>}
+     * @description убрать товар из списка для сравнения
+     * @url `/comparisons/del/'
+     */
     async delFromCompare(product_id){
-        //убрать товар из списка для сравнения
         runInAction(()=>{this._loading = true })
         await ajaxFetch({
             url:`/comparisons/del/`,
@@ -129,14 +179,21 @@ class CompareProductsState{
                     this._amt-=1;
                 })
             }
-
         }).finally(()=>{
             runInAction(()=>{ this._loading = false})
         })
     }
 
+    /**
+     * @description проверить находится ли товар в списке для сравнения. по id.
+     * @param {Number} product_id
+     * @return {boolean}
+     * @description с начало проверяет наличие id в
+     * @description status this._productsListId.
+     * @description если не находит, выполняет запрос к серверу.
+     * @url `/comparisons/check/${product_id}/
+     */
     checkProductToCompare(product_id){
-        // проверить находится ли товар в списке для сравнения.
         if ( this._productsListId.includes(product_id)){
             return true
         }
@@ -161,6 +218,18 @@ class CompareProductsState{
 
         })
         return false
+    }
+
+    /**
+     * @description очищает данные на стороне клиента
+     */
+    clean(){
+        runInAction(()=>{
+            this._amt = undefined
+            this._catalogs = undefined
+            this._loading = false
+            this._products = undefined
+        })
     }
     
 }

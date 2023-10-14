@@ -1,9 +1,15 @@
 import {useLayoutEffect, useRef} from "react";
 import FormBody from "./formsUserInfo/FormBody";
 
+/**
+ *
+ * @param {function} onSubmit
+ * @description Форма изменений данный пользователя.
+ * @description Данный отправляются по нажатию Enter.
+ * @return {JSX.Element}
+ * @constructor
+ */
 export default function FormChangeInfoUser({onSubmit}){
-    // Форма изменений данный пользователя.
-    // Данный отправляются по нажатию Enter.
     let ref = useRef()
 
     useLayoutEffect(()=>{

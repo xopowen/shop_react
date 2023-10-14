@@ -1,25 +1,31 @@
 import PictureMixin from "../../helpFunction/PictureMixin";
 
 
+/**
+ *
+ * @param {Object} data
+ * @example
+ * {data->{
+ *         id	5
+ *         name:"ДЕФИБРИЛЛЯТОР-МОНИТОР ДКИ-Н-11"
+ *         catalog :Catalog,
+ *         act:0
+ *         price:10000
+ *         currency:"₽"
+ *         feedback	[  ]
+ *         img:[   ]
+ *         avg_score:0
+ *         amt:1
+ *         issued:true
+ *     }}
+ * @description Отобразить карточку оформленного товара.
+ * @return {JSX.Element}
+ * @constructor
+ *
+ */
 export default function UserOrderCard({data}){
-    /*
-    Отобразить карточку оформленного товара.
-    props->{data->{
-        id	5
-        name:"ДЕФИБРИЛЛЯТОР-МОНИТОР ДКИ-Н-11"
-        catalog :Catalog,
-        act:0
-        price:10000
-        currency:"₽"
-        feedback	[  ]
-        img:[   ]
-        avg_score:0
-        amt:1
-        issued:true
-    }}
-    * */
-
     let product = data.product
+
     return <article className="basket__card basket-card">
         <div className="basket-card__col-1">
             <input   type="checkbox" id={`basket-card-${product.id}`}/>

@@ -2,21 +2,39 @@ import {HEADERS} from "../constants";
 import getCsrftoken from "./getCsrftoken";
 import authStore from "../mbox/AuthStore";
 
-export default async function ajaxFetch({url,method,data=undefined,headers={}}){
-    /*
-    * возвращает промис который, приводит к промисам [ок: Promise  ->  если ответ сервера был положительным,
-    *                                                error: Promise->  промесс с ошибками
-    *                                                status: int -> код ответа].
-    * одновременно может быть только 1 из них.
-    * в случаи ошибки 401 - запрос не авторизирован.
-    * идёт проверка действительности refresh токен и повторная отправка запоса
-    * */
+/**
+ *
+ * @param {string} url
+ * @param {string} method
+ * @param {Object} data
+ * @param {Object} headers
+ * @default HEADERS.ajax if method in [post,put,delete]
+ * @see HEADERS.ajax
+ * @return {Promise<*[]>}
+ * @example
+ * [ок: Promise  ->  если ответ сервера был положительным,
+ *  error: Promise->  промесс с ошибками,
+ *  status: int -> код ответа]
+ * @description возвращает промис который,c промисам.
+ * @description одновременно может быть только 1 из них.
+ * @description в случаи ошибки 401 - запрос не авторизирован.
+ * @description идёт проверка действительности refresh токен и повторная отправка запоса
+ */
+export default async function ajaxFetch({url,
+                                            method,
+                                            data=undefined,
+                                            headers={}}){
+
     let option = {
         method:method,
         headers: Object.assign(HEADERS.ajax,headers)
 
     }
 
+    /**
+     * @param {string} method
+     * @return {boolean}
+     */
     function isNotSafeRequest(method){
         return [ 'post','put','delete'].includes(method.toLowerCase())
 
@@ -41,7 +59,6 @@ export default async function ajaxFetch({url,method,data=undefined,headers={}}){
                          return ajaxFetch({url,method,data,headers})
                        }
                    })
-
                }
             }
 
@@ -51,20 +68,31 @@ export default async function ajaxFetch({url,method,data=undefined,headers={}}){
                     if(res){
                        return JSON.parse(res)
                     }
+                }).catch(e=>{
+                    console.log({url:url})
                 })
             }
         }else{
             if(result.body){
-                error = result.text().then(res=>{
+                error = result.text().then(res =>{
+
                     if(res){
-                        return JSON.parse(res)
+                        try {
+                            return JSON.parse(res)
+                        }catch (e){
+                             return   Promise.reject( 'error request')
+                        }
+
                     }
+                }).catch(e=>{
+                    console.log({url:url})
                 })
             }
         }
     })
     .catch(e=>{
-        console.log(Object.assign(e,{url:url}))
+        console.log({url:url})
+        // console.log(Object.assign(e,))
         })
     return [res,error,status]
 }

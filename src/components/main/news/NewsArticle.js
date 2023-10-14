@@ -8,29 +8,34 @@ import useIntObs from "../../hooks/useIntObs";
 import {observer} from "mobx-react-lite";
 
 
-let NewsArticle = observer((props)=>{
-
-    /*
-    отображает страницу новость.
-    загружает дополнительную информацию по
-     url:`/news/${Params.id}/`.
-    data->{"id":8,
-            "title":"УЧЕНЫЕ ВЫРАСТИЛИ КЛЕТКИ  СО ВЖИВЛЕННОЙ В НИХ ЭЛЕКТРОНИКОЙ",
-            "img":'' or null,
-            "author":"Константин К.Р",
-            "date":"2023-09-13T07:01:01.854723Z",
-            "paragraphs":[]
-            }
-    */
-    let [ref,isView] = useIntObs({},true)
+/**
+ * 
+ * @type {React.FunctionComponent<object>}
+ * @description отображает страницу новости.
+ * @description загружает дополнительную информацию c сервера
+ * @url `/news/${params.id}/`.
+ */
+let NewsArticle = observer(()=>{
+ 
+    let [ref,] = useIntObs({},true)
     const location = useLocation();
-    let Params = useParams();
+    let params = useParams();
     let navigate =   useNavigate()
+    /**
+     *@example
+     *  data->{"id":8,
+     *         "title":"УЧЕНЫЕ ВЫРАСТИЛИ КЛЕТКИ  СО ВЖИВЛЕННОЙ В НИХ ЭЛЕКТРОНИКОЙ",
+     *         "img":'' or null,
+     *         "author":"Константин К.Р",
+     *         "date":"2023-09-13T07:01:01.854723Z",
+     *         "paragraphs":[]
+     *             }
+     */
     const [data, setData] = useState()
 
     useEffect(() => {
         ajaxFetch( {
-            url:`/news/${Params.id}/`,
+            url:`/news/${params.id}/`,
             method:'GET',
         }).then((response) => {
             let [ok,error,status]=response
@@ -41,7 +46,7 @@ let NewsArticle = observer((props)=>{
                 navigate('/404/')
             }
 
-        })}, [Params.id, location])
+        })}, [params.id, location, navigate])
 
     return <>
         <section ref={ref} className="sections sections_head-left sections_full-page opacity">

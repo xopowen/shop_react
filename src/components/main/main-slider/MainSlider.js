@@ -12,12 +12,13 @@ import {Catalog_item} from "./Catalog_item";
 import ajaxFetch from "../../helpFunction/ajaxFetch";
 import SlideNavicationButton from "../../subComponents/SlideNavicationButton";
 
+/**
+ * @description отображает список полученных банеров. взятых с сервера
+ * @return {JSX.Element}
+ * @constructor
+ * @url "/main-slider/",
+ */
 export default function MainSlider() {
-    /*
-
-    * отображает список полученных банеров.
-      url:"/main-slider/",
-    * */
 
     const [slaidItem, setslaidItem] = useState([])
     useEffect(() => {
@@ -25,7 +26,7 @@ export default function MainSlider() {
              url:"/main-slider/",
              method:"GET"
          }).then(result => {
-             let [ok, error] = result
+             let [ok,] = result
              if(ok){
                  ok.then(slides=> {
                          setslaidItem(slides)

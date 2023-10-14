@@ -6,11 +6,28 @@ import {Link} from "react-router-dom";
 import Spinner from "../Spinner";
 
 
+/**
+ *
+ * @return {JSX.Element}
+ * @component
+ * @description Поиск по названиям категорий и товаров.
+ *  использует useTransition для избегания блокировки ввода в строку поиска
+ */
 export default function Search() {
-    /* Поиск по названиям категорий и товаров.
-    * использует useTransition для избегания блокировки ввода в строку поиска
-    * */
     const [isPending, startTransition] = useTransition()
+    /**
+     * @param choice
+     * @example
+     * {"products":
+     *      [
+     *        {"name":"PAD","id":3,"catalog":3},
+     *      ]
+     * "categories":
+     *      [
+     *      {"name":"Дефибреляторы","id":3}
+     *      ]
+     *  }
+     */
     let [choice, setChoice] = useState()
     let [countPromis,setCountPromis] = useState(0)
     let [inputText,setTextInput] = useState('')
@@ -18,9 +35,11 @@ export default function Search() {
 
     function haveFocus(e){
         setInputFocus(true)
+        e.preventDefault()
     }
     function haveBlur(e){
         setInputFocus(false)
+        e.preventDefault()
     }
     function haveSearch(e) {
 
@@ -41,12 +60,12 @@ export default function Search() {
                 method: 'GET',
             })
             resp.then(prop => {
-                let [ok, error] = prop
+                let [ok, ] = prop
                 ok.then(res => call(res))
             })
 
         } else {
-            setChoice({})
+            setChoice(undefined)
         }
     },[inputText])
 
@@ -55,9 +74,9 @@ export default function Search() {
             <img src={loupe} alt="Search"/>
         </button>
         <input name="search" onFocus={haveFocus} onBlur={haveBlur}  onInput={haveGetFilterChoice} value={inputText} placeholder="Поиск медицинского оборудования" type="search"/>
-        <ul className={''}>
-            { countPromis>0 && <li className={'not-hover'}>
-                <Spinner addClass={''}/>
+        <ul>
+            { countPromis > 0 && <li className={'not-hover'}>
+                <Spinner/>
             </li>}
             { inputFocus && <>
                 {choice?.products && choice.products.map(v => {

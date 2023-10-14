@@ -1,10 +1,19 @@
 import React from "react";
 
+/**
+ *
+ * @param {Object} videos
+ * @example
+ * videos->{
+ *   id:Number,
+ *   link:String
+ * }
+ * @return {JSX.Element}
+ * @constructor
+ * @description  секция отображения videos.
+ */
 export default function VideoPlair({videos}){
-    /*
-    секция отображения videos.
 
-    * */
     return   <section id="video-review" className="sections sections_head-left sections_full-page">
         <h2 className="sections__head">
             Видеобзор

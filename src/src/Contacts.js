@@ -3,11 +3,14 @@ import FormOrderCallback from "../components/formComponents/forms/FormOrderCallb
 import MapSection from "../components/main/MapSection";
 
 
+/**
+ *
+ * @param {string} head
+ * @return {JSX.Element}
+ * @components
+ * @description Страница статической информации. Контакты
+ */
 export default function Contacts({head}){
-    /*
-    props->{head - заголовок}
-    Страница статической информации.
-    */
 
 return <>
     <section className="sections">

@@ -5,19 +5,25 @@ import useIntObs from "../../hooks/useIntObs";
 import PictureMixin from "../../helpFunction/PictureMixin";
 
 
+/**
+ *
+ * @param {Object}data
+ * @return {JSX.Element}
+ * @constructor
+ * @example
+ * data ->{
+ *      "id":3,
+ *      "name":"Дефибреляторы",
+ *      "img":"http://localhost:8000/media/ ",
+ *      "order":1  }
+ * @description карточка каталога.
+
+ * */
 export default function CatalogItem({data}){
-    /*
-    * карточка каталога.
-    * data ->{
-    * "id":3,
-    * "name":"Дефибреляторы",
-    * "img":"http://localhost:8000/media/ ",
-    * "order":1
-    * }
-    * */
+
 
     let location = useLocation()
-    let [ref,isView] = useIntObs({},true)
+    let [ref,] = useIntObs({},true)
 
     return  <article ref={ref}  className="card-catalog card-catalog_small blue-vision">
         <div className="card-catalog__body appear">

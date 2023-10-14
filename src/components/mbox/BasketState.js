@@ -4,6 +4,11 @@ import ajaxFetch from "../helpFunction/ajaxFetch";
 import authStore from "./AuthStore";
 
 
+/**
+ * @class BasketState
+ * @description хранит данные о товарах которые помещены в Корзину.
+ * @description собрал в себе все методы работы с этим функционалом.
+ */
 class BasketState{
 
     _amt = undefined
@@ -11,33 +16,38 @@ class BasketState{
     _selectedElements = undefined
 
     constructor() {
-        /*
-        * хранит данные о товарах которые помещены в Корзину.
-        * собрал в себе все методы работы с этим функционалом.
-        *
-        *
-        * */
         makeAutoObservable(this)
     }
+
+    /**
+     * @getter
+     * @description получение информации о количестве товара в корзине.
+     * @return {status<undefined | Number>}
+     */
     get amt(){
-        // получение информации о количестве товара в корзине
         if(!this._amt){
             this._getAmt()
         }
         return this._amt
     }
-
+    /**
+     * @getter
+     * @description получение список элементов в корзине.
+     * @return {status<undefined | Array<Object>>}
+     */
     get elements(){
-        // список элементов
         if(!this._elements){
             this._getElements()
         }
-
         return this._elements
     }
 
+    /**
+     * @description получение данных о количестве товаров с сервера.
+     * @private
+     * @url '/basket/amt/'
+     */
     _getAmt(){
-        // получение данных о количестве товаров с сервера.
         authStore.authAjaxFetch(ajaxFetch({
             url:'/basket/amt/',
             method:"GET"
@@ -51,13 +61,17 @@ class BasketState{
             }
         })
     }
+
+    /**
+     * @description получение список товаров с сервера.
+     * @private
+     */
     _getElements(){
-        // получение список товаров с сервера.
         ajaxFetch({
             url:'/basket/',
             method:"GET"
         }).then(response=>{
-            let [ok,error]= response
+            let [ok,]= response
             if(ok){
                 ok.then(res=> runInAction(()=>{ this._elements = res}) )
                 this._getAmt()
@@ -65,35 +79,44 @@ class BasketState{
         })
     }
 
+    /**
+     * @async
+     * @param {Number} productID
+     * @description добавить товар в корзину по id
+     * @return {Promise<*[]|*>}
+     */
     async addToBasket(productID){
-        //добавить товар в корзину по id
         let request = ajaxFetch({
             url:'/basket/',
             method:'POST',
             data: JSON.stringify({product_id:productID})
         })
         request.then(resonse=>{
-            let [ok,error]=resonse
+            let [ok,]=resonse
             if(ok){
                 runInAction(()=>{
-                    this._getAmt()
+                    this._amt += 1
                     this._elements = undefined
                 })
             }
         })
         return  request
     }
+
+    /**
+     * @async
+     * @description убрать товар из корзины по id
+     * @param {Number} productID
+     * @return {Promise<*[]|*>}
+     */
     async delToBasket(productID){
-        //убрать товар из корзины по id
         let request = ajaxFetch({
             url:'/basket/',
             method:'DELETE',
             data: JSON.stringify({"product_id":productID})
         })
-
         request.then(resonse=>{
-
-            let [ok,error]=resonse
+            let [ok,]=resonse
             if(ok){
                 runInAction(()=>{
                     this._getAmt()
@@ -106,17 +129,22 @@ class BasketState{
         return  request
     }
 
+    /**
+     * @method
+     * @param {Object} element
+     * @description увеличить количество товара в корзине
+     * @description максимальное количество товаров 99.
+     * @url `/basket/order/${element.id}/add-amt/`
+     */
     addAmtToOrder(element){
-        // увеличить количество товара в корзине
         if(element.amt >= 99){
             return
         }
         ajaxFetch({
             url:`/basket/order/${element.id}/add-amt/`,
             method:'POST',
-
         }).then(response=>{
-            let [ok,error] = response
+            let [ok,] = response
             if(ok){
                 runInAction(()=>{
                     element.amt = element.amt+1
@@ -125,8 +153,15 @@ class BasketState{
             }
         })
     }
+
+    /**
+     * @method
+     * @param {Object} element
+     * @description уменьшить количество товара в корзине
+     * @description минимальное количество товаров 99.
+     * @url `/basket/order/${element.id}/add-amt/`
+     */
     minesAmtToOrder(element){
-        // уменьшить количество товара в корзине
         if(element.amt<=0){
             return
         }
@@ -134,7 +169,7 @@ class BasketState{
             url:`/basket/order/${element.id}/mines-amt/`,
             method:'POST',
         }).then(response=>{
-            let [ok,error] = response
+            let [ok,] = response
             if(ok){
                 runInAction(()=>{
                     element.amt = element.amt-1
@@ -144,17 +179,24 @@ class BasketState{
         })
     }
 
+    /**
+     * @method
+     * @description получить стойкость всех выбранных товаров
+     * @return {Number | undefined}
+     */
     getSumPriceForAmt(){
-        //получить стойкость всех выбранных товаров
-        if (this._selectedElements){
+        if (this._selectedElements ){
             return this._selectedElements.reduce((sum,element)=>sum + (element.amt * element.product.price ),0)
         }
-        return
-
     }
 
+    /**
+     * @method
+     * @description очистка корзины
+     * @description для каждого элемента вызывает delToBasket
+     */
     deleteAllOrderProduct(){
-        // очистка корзины
+        //
        if(this._elements){
            this._elements.forEach(orderProduct=>{
                this.delToBasket(orderProduct.product.id)
@@ -162,23 +204,37 @@ class BasketState{
        }
     }
 
+    /**
+     * @method
+     * @description Добавить товар в выбранные. Нужно для пославшего оформления.
+     * @param {Object} element
+     */
     addToSelected(element){
-        // Добавить товар в выбранные. Нужно для пославшего оформления.
         if(this._selectedElements){
             this._selectedElements.push(element)
             return
         }
         this._selectedElements = [element]
     }
+
+    /**
+     * @method
+     * @description добавить товар в выбранные. Нужно для пославшего оформления.
+     * @param {Object} element
+     */
     delFromSelected(element){
-        // Добавить товар в выбранные. Нужно для пославшего оформления.
         if(this._selectedElements){
             this._selectedElements.splice(this._selectedElements.findIndex(v=>v===element),1)
         }
     }
 
+    /**
+     * @method
+     * @param {Object} element
+     * @description проверка нахождение товара в списке выбранных.
+     * @return {boolean}
+     */
     isSelected(element){
-        // проверка нахождение товара в списке выбранных.
         if(this._selectedElements){
            return   this._selectedElements.includes(element)
         }
@@ -186,15 +242,20 @@ class BasketState{
     }
 
 
+    /**
+     * @async
+     * @description оформление выбранных заказов. Если они есть
+     * @url '/basket/order/formalization/'
+     * @return {Promise<void>}
+     */
     async formalizationSelectOrder(){
-        //оформление выбранных заказов.
         if(this._selectedElements){
             await  ajaxFetch({
                 url:'/basket/order/formalization/',
                 method:"PUT",
                 data:JSON.stringify({'orders': this._selectedElements.map(v=>v.id)})
             }).then(response=>{
-                let [ok,error]= response
+                let [ok,]= response
                 if(ok){
                     ok.then(res=> runInAction(()=>{
                         this._elements.filter(v=>!this._selectedElements.includes(v))
@@ -208,8 +269,12 @@ class BasketState{
         }
 
     }
+
+    /**
+     * @method
+     * @description очистить информацию еа стороне клиента.
+     */
     cleanInfo(){
-        //очистить информацию еа стороне клиента.
         runInAction(()=>{
             this._amt = undefined
             this._elements = undefined

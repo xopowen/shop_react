@@ -7,8 +7,14 @@ import phone from "../../img/icons/phone.svg";
 import phone_big from '../../img/icons/phone_big.svg'
 import arrow_big from '../../img/icons/arrow-big.svg'
 import logo from "../../img/icons/logo.svg";
-export default function Footer(props){
-    // отображает информацию подвала сайта. Нет state
+
+/**
+ *
+ * @return {JSX.Element}
+ * @description  отображает информацию подвала сайта. Нет state
+ */
+export default function Footer(){
+
 
     function haveScrollDoUp(e){
         // плавный подъём в начало страницы
@@ -17,6 +23,7 @@ export default function Footer(props){
             left: 0,
             behavior:'smooth'
         })
+        e.preventDefault()
     }
 
     return <footer className="footer">
@@ -39,7 +46,7 @@ export default function Footer(props){
                         <Link to={"/request-call-back-page"}
                               className="order-call"
                               title="Заказать обратный звонок">
-                            <img src={phone}/>Заказать обратный звонок
+                            <img src={phone} alt={''}/>Заказать обратный звонок
                         </Link>
                     </div>
 

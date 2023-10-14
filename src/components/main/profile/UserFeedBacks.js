@@ -5,11 +5,16 @@ import UserFeedBacksCard from "./UserFeedBacksCard";
 //img
 import check_printer from "../../../img/icons/check-printer.svg";
 
+/**
+ *
+ * @param {string} head
+ * @constructor
+ * @url '/client-info/feed-backs/'
+ * @description   Отображает комментарии пользователя оставленные на продукты.
+ * @return {JSX.Element}
+ */
 export default function UserFeedBacks({head}){
-    /*
-    Отображает комментарии пользователя оставленные на продукты.
-     url:'/client-info/feed-backs/',
-    * */
+
     let [cardList,setCardList] = useState()
 
     useEffect(()=>{
@@ -17,7 +22,7 @@ export default function UserFeedBacks({head}){
             url:'/client-info/feed-backs/',
             method:'GET',
         }).then(response=>{
-            let [ok,error] = response
+            let [ok,] = response
             if(ok){
                 ok.then(res=>setCardList(res))
             }
@@ -30,7 +35,7 @@ export default function UserFeedBacks({head}){
         </div>
         <div className="sections__body grid-box">
             <button className={'button_print'}>
-                <img src={check_printer}/>
+                <img src={check_printer} alt={''}/>
                 Распечатать
             </button>
             <div className="basket__cards">

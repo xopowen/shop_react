@@ -1,36 +1,41 @@
 import {Link} from "react-router-dom";
 import {useEffect, useState} from "react";
-import {HEADERS} from "../constants";
-
 
 import useIntObs from "../hooks/useIntObs";
 import ajaxFetch from "../helpFunction/ajaxFetch";
 
-export default function BurgerMenu(props) {
-    /*
-    отображает бургер меню где с лева категории а с права вариантны первого фильтра
-    url:'/burger-menu/',
+/**
+ *
+ * @param props
+ * @description данные получают с сервера.
+ * @description отображает бургер меню где с лева категории а с права вариантны первого фильтра
+ * @return {JSX.Element}
+ * @constructor
+ * @url '/burger-menu/'
 
-    get from ajax {
-        "id": 6,
+ */
+export default function BurgerMenu(props) {
+/**
+@example
+data->{
+    "id": 6,
         "name": "ИМПЛАНТЫ",
         "order": 5,
         "choices": [
-            {
-                "id": 1,
-                "name": "Автоматический",
-                "showPopup": true,
-                "selected": false,
-                "filter": 1,
-                "catalog": 6
-            },
-        ]
-                }
-    * */
-
+        {
+            "id": 1,
+            "name": "Автоматический",
+            "showPopup": true,
+            "selected": false,
+            "filter": 1,
+            "catalog": 6
+        },
+    ]
+}
+    */
     const [data, setData] = useState([])
     const [activeCatalog, setActiveCatalog] = useState({})
-    let [ref,isView] = useIntObs()
+    let [ref,] = useIntObs()
 
     //activeData - нужна для отображения вариантов первого фильтра
     let activeData = data.find((value)=>value.id === activeCatalog )
@@ -40,7 +45,7 @@ export default function BurgerMenu(props) {
             url:'/burger-menu/',
             method:'GET'
         }).then(response => {
-            let [ok,error] = response
+            let [ok,] = response
             if(ok){
                 ok.then(res=>setData(res))
             }

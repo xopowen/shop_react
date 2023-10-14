@@ -7,33 +7,39 @@ import stateBasket from "../../mbox/BasketState";
 
 import basketImg from '../../../img/icons/basket.svg'
 
+/**
+ *
+ * @type {React.FunctionComponent<{readonly data?: Object}>}
+ * @example
+ *     data-> {
+ *     "id":22,
+ *     "product":
+ *         { "id":5,
+ *         "name":"ДЕФИБРИЛЛЯТОР-МОНИТОР  ДКИ-Н-11",
+ *         "catalog":
+ *             {"id":3,
+ *             "name":"Дефибреляторы",
+ *             "img":"/media/catalog/%D0%B1%D0%B0%D0%BD%D0%BD%D0%B5%D1%80_%D0%B4%D0%B8%D1%84%D1%8B_1_xb6V280.png",
+ *             "order":1},
+ *         "act":0,
+ *         "price":10000.0,
+ *         "currency":"₽",
+ *         "feedback":[{"score":0}],
+ *          "img":[
+ *                 {"link":"/media/img/2023/09/18/product_%D0%B4%D0%B8%D1%84%D1%8B.png"}]
+ *          ,"avg_score":0},
+ *          "amt":1,
+ *          "issued":false}
+ * @depend stateBasket
+ * @see stateBasket
+ * @description  карточка товара в Basket.
+ * @description  При выборе попадает в список выбранный в stateBasket который
+ * @description в последствии можно отравить на сервер для оформления заказа.
+ * @return {React.FunctionComponentElement}
+
+ */
 let BasketCard = observer(({data})=>{
 
-    /*
-    карта товара в Basket. зависит от stateBasket
-    data-> {
-    "id":22,
-    "product":
-        { "id":5,
-        "name":"ДЕФИБРИЛЛЯТОР-МОНИТОР  ДКИ-Н-11",
-        "catalog":
-            {"id":3,
-            "name":"Дефибреляторы",
-            "img":"/media/catalog/%D0%B1%D0%B0%D0%BD%D0%BD%D0%B5%D1%80_%D0%B4%D0%B8%D1%84%D1%8B_1_xb6V280.png",
-            "order":1},
-        "act":0,
-        "price":10000.0,
-        "currency":"₽",
-        "feedback":[{"score":0}],
-         "img":[
-                {"link":"/media/img/2023/09/18/product_%D0%B4%D0%B8%D1%84%D1%8B.png"}]
-         ,"avg_score":0},
-         "amt":1,
-         "issued":false}
-    }
-    При выборе попадает в список выбранный в stateBasket который
-    в последствии можно отравить на сервер для оформления заказа.
-    */
     let product = data.product
 
     function haveCheckBox(e){
@@ -76,7 +82,7 @@ let BasketCard = observer(({data})=>{
             </span>
         </p>
         <button onClick={()=>stateBasket.delToBasket(data.product.id)} className="basket-card__del">
-            <img src={basketImg}/>
+            <img src={basketImg} alt={''}/>
         </button>
     </article>
 })

@@ -3,10 +3,15 @@ import {SwiperSlide} from "swiper/react";
 import CompareProductCard from "./CompareProductCard";
 import stateCompare from "../../mbox/CompareProducts";
 
+/**
+ * @param {Object} catalogActive
+ * @description показывает слайдер списка продуктов.
+ * @depend stateCompare
+ * @see stateCompare
+ * @type {React.FunctionComponent<object>}
+ */
 let CompareProducts = observer(catalogActive => {
-    /*
-    * показывает слайдер списка продуктов. Зависит от stateCompare
-    * */
+
     let products =  stateCompare.products
 
     return <>

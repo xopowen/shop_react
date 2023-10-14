@@ -5,16 +5,27 @@ import TelNumberMask from "../helpFunction/TelNumberMask";
 import phone from "../../img/icons/phone.svg";
 
 
-export default function PhoneInput ({name,ariaInvalid,defaultValue,required}){
-    // поле ввода номера телефона с маской.
+/**
+ *
+ * @param {string} name
+ * @param {Boolean} ariaInvalid
+ * @param {string | undefined} defaultValue
+ * @param {Boolean} required
+ * @description поле ввода номера телефона с маской.
+ * @see TelNumberMask
+ * @return {JSX.Element}
+ * @constructor
+ */
+export default function PhoneInput({name, ariaInvalid, defaultValue, required}) {
     let ref = useRef()
-    useEffect(()=>{
-        let maskListener =  new TelNumberMask(ref.current)
-        return ()=>{
+
+    useEffect(() => {
+        let maskListener = new TelNumberMask(ref.current)
+        return () => {
             maskListener.defEvents()
         }
-    },[])
-    return <label  className="form__field form__field_tel">
+    }, [])
+    return <label className="form__field form__field_tel">
         <img src={phone} alt={name}/>
         <input ref={ref}
                required={required}

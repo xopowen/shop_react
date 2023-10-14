@@ -10,27 +10,41 @@ import stateBasket from "../../mbox/BasketState";
 import Spinner from "../../Spinner";
 
 
+/**
+ *
+ * @param {Object} data
+ * @description отображает карточку товара.
+ * @description в случаи если товар добавят в корзину отобразит окно подтверждения.
+ * @example
+ * data->{
+ *         "id":6,
+ *         "name":"АВТОМАТИЧЕСКИЙ ДЕФИБРИЛЛЯТОР PRIMEDIC HEARTSAVE PAD",
+ *         "catalog":{"id":3,
+ *                    "name":"Дефибреляторы",
+ *                    "img":"http://localhost:8000/media/catalog/6V280.png","order":1},
+ *         "act":1,
+ *         "price":1.0,
+ *         "currency":"₽",
+ *         "feedback":[],
+ *         "img":[],
+ *         "avg_score":0}
+ *     }}
+ *
+ * @return {JSX.Element}
+ * @constructor
+ */
 export default function ProductCard({data}){
-    /*
-    отображает карточку товара.
-    props->{data->{
-        "id":6,
-        "name":"АВТОМАТИЧЕСКИЙ ДЕФИБРИЛЛЯТОР PRIMEDIC HEARTSAVE PAD",
-        "catalog":{"id":3,
-                   "name":"Дефибреляторы",
-                   "img":"http://localhost:8000/media/catalog/6V280.png","order":1},
-        "act":1,
-        "price":1.0,
-        "currency":"₽",
-        "feedback":[],
-        "img":[],
-        "avg_score":0}
-    }}
-    в случаи если товар добавят в корзину отобразит окно подтверждения.
-    * */
-    let [ref,isView] = useIntObs({},true)
+
+    let [ref,] = useIntObs({},true)
     let [showOverPageElement,setShow] = useState()
     let [loadStats,setLoadStats] = useState()
+
+
+    /**
+     * @see  stateBasket.addToBasket
+     * @param e
+     * @description
+     */
     function haveShow(e){
         setLoadStats(true)
         stateBasket.addToBasket(data.id).then((request) => {
@@ -41,6 +55,7 @@ export default function ProductCard({data}){
         }).finally(()=>{
             setLoadStats(false)
         })
+        e.preventDefault()
     }
 
     function haveShowOverPageElement(value=false){

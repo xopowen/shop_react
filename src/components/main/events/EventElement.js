@@ -6,31 +6,33 @@ import PictureMixin from "../../helpFunction/PictureMixin";
 //img
 import next from "../../../img/icons/next 21.svg"
 
+/**
+ *
+ * @param data
+ * @example
+ * data->{
+ *     "id":1,
+ *     "img":[{"link":"http://localhost:8000/media/img/2023/09/14/event-img.png"},],
+ *     "name":"Встреча",
+ *     "description":"Встреча",
+ *     "img_face":"http://localhost:8000/media/events/2023/09/14/event-img.png",
+ *     "address":"иркутск",
+ *     "time_start":"2023-09-14T11:56:32Z"
+ *     }
+ * @description Получает данные о мероприятии и может отобразить 3 элемента
+ * @description картонку как элемент списка,
+ * @description карточку с описанием,
+ * @description карточку с заявкой на участие.
+ * @return {JSX.Element}
+ * @constructor
+ */
 export default function EventElement({data}){
-    /*
-    Получает данные о мероприятии и может отобразить 3 элемента
-    картонку как элемент списка,
-    карточку с описанием,
-    карточку с заявкой на участие.
-
-    * props->{
-    * data->{
-    "id":1,
-    "img":[{"link":"http://localhost:8000/media/img/2023/09/14/event-img.png"},],
-    "name":"Встреча",
-    "description":"Встреча",
-    "img_face":"http://localhost:8000/media/events/2023/09/14/event-img.png",
-    "address":"иркутск",
-    "time_start":"2023-09-14T11:56:32Z"
-    }
-   }
-   */
-
     let [isBookShow,setIsBook] = useState(false)
     let [isArticle,setIsArticle] = useState(false)
     
     let [statusIsBookRequesr,setStatus] = useState(false)
     let [errorRequest,setError] = useState()
+
     function haveTobook(e){
        setStatus(false)
        setError(undefined)

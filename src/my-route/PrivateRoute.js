@@ -1,8 +1,16 @@
-import { Navigate, Outlet, Route } from "react-router-dom";
+import { Navigate  } from "react-router-dom";
 
 import { observer } from "mobx-react-lite";
 import authStore from "../components/mbox/AuthStore";
 
+/**
+ *
+ * @param props
+ * @return {JSX.Element|*}
+ * @constructor
+ * @description проверяет статус авторизации пользователя
+ * @description если пользователь не авторизован перенаправляет на страницу авторизации.
+ */
 const PrivateRoute = (props) => {
 
     if (authStore.isAuthInProgress) {
@@ -16,7 +24,6 @@ const PrivateRoute = (props) => {
             authStore.checkAuth()
             return <></>
         }
-
         return <Navigate to="/login" />;
     }
 };

@@ -9,10 +9,13 @@ import profile_regist from '../img/icons/profile-regist.svg'
 import LinkTerms from "../components/formComponents/LinkTerms";
 
 
+/**
+ *
+ * @return {JSX.Element}
+ * @constructor
+ * @description  отображает форму для регистрации пользователя
+ */
 export default function Registration(){
-    /*
-     отображает форму для регистрации пользователя
-     * */
     let navigate = useNavigate()
     const [error, setError] = useState( );
 

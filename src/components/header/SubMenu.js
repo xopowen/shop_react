@@ -8,10 +8,16 @@ import BasketSumAmt from "../main/basket/BasketSumAmt";
 import CompareSumAmt from "../main/compare/CompareSumAmt";
 
 
+/**
+ *
+ * @param {string} link
+ * @param {string} text
+ * @description  активная ссылка будит отображаться иначе
+ * @return {JSX.Element}
+ * @constructor
+ */
 function ItemSubMenu({link,text}) {
-    /*
-     активная ссылка будит отображаться иначе
-    * */
+
     let headActive=({isActive, isPending })=>{
         let CLASS =  "sub-menu__item sub-text "
         if (isActive){
@@ -28,12 +34,13 @@ function ItemSubMenu({link,text}) {
     </NavLink>
 }
 
-export default function SubMenu(props){
-    /*
-    Отбракует под меню.
-    Все данные статичны
-    * */
-
+/**
+ * @description Отображает подменю.
+ * @description Все данные статичны
+ * @return {JSX.Element}
+ * @constructor
+ */
+export default function SubMenu(){
 
     let menu_list = [{number: 1, text: 'О компании',link: '/about-company'},
        {number: 2, text: 'Производители',link: '/manufactures'},
@@ -46,8 +53,6 @@ export default function SubMenu(props){
     let menu_right = [{number: 1, img:compare, text: 'Сравнения',link: '/comparisons'},
        {number: 2, img:basket, text: 'Корзина',link:'/basket'},
        {number: 3,img:profile, text: 'Личный кабинет',link:'/personal-area'}]
-
-
 
         return  <>
             <nav className="sub-menu ">
@@ -73,7 +78,7 @@ export default function SubMenu(props){
 
                         <Link to={value.link} className="sub-menu__element">
                             {nembeOverImg}
-                            <img loading={'lazy'} src={value.img} className="sub-menu__img"/>
+                            <img loading={'lazy'} src={value.img} className="sub-menu__img" alt={''}/>
                             <p className="sub-text">{value.text}</p>
                         </Link>
                     </li>

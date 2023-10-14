@@ -8,16 +8,18 @@ import {observer} from "mobx-react-lite";
 import CardInfo from "../../subComponents/CardInfo";
 import ManufactureCard from "./ManufactureCard";
 
+/**
+ *
+ * @type {React.FunctionComponent<{readonly head?: string}>}
+ * @depend stateManufacture
+ * @see stateManufacture
+ * @description в зависимости от расположения отображает список производителей в 2 вариатнах
+ * @description ManufactureCard- если элемент на pathname: '/manufactures/'
+ * @description CardInfo - иначе
+
+ */
 let Manufacture = observer(({head}) => {
-    /*
-    props->{
-        head -> заголовок
-        зависит от stateManufacture.
-        в зависимости от расположения отображает список производителей в 2 вариатнах
-        CardInfo - если элемент не на pathname: '/manufactures/'
-        ManufactureCard- если элемент на pathname: '/manufactures/'
-    }
-    * */
+
     const locations = useLocation()
     const data = stateManufacture.elements
 

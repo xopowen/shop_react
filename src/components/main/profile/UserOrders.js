@@ -1,16 +1,20 @@
 
 import {useEffect, useState} from "react";
 import ajaxFetch from "../../helpFunction/ajaxFetch";
-import BasketCard from "../basket/BasketCard";
 //img
 import check_printer from '../../../img/icons/check-printer.svg';
 import UserOrderCard from "./UserOrderCard";
-export default function UserOrders({head}){
-    /*
-    отображает карточки заказов которые уже оформлены.
-    url:'/client-info/orders/',
-    * */
 
+/**
+ *
+ * @param head
+ * @return {JSX.Element}
+ * @constructor
+ * @description  отображает карточки заказов которые уже оформлены.
+ * @description получение от сервера
+ * @url '/client-info/orders/',
+ */
+export default function UserOrders({head}){
     let [cardList,setCardList] = useState()
 
     useEffect(()=>{
@@ -18,7 +22,7 @@ export default function UserOrders({head}){
             url:'/client-info/orders/',
             method:'GET',
         }).then(response=>{
-            let [ok,error] = response
+            let [ok,] = response
             if(ok){
                 ok.then(res=>setCardList(res))
             }
@@ -34,7 +38,7 @@ export default function UserOrders({head}){
         </div>
         <div className="sections__body grid-box">
             <button className={'button_print'}>
-                <img src={check_printer}/>
+                <img src={check_printer} alt={''}/>
                 Распечатать
             </button>
             <div className="basket__cards">

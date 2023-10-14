@@ -2,12 +2,17 @@ import {useSwiper} from "swiper/react";
 import PictureMixin from "../helpFunction/PictureMixin";
 import slideNext from "../../img/next.png";
 
+/**
+ *
+ * @param {string} direction next or pre
+ * @param  swiperItem
+ * @return {JSX.Element}
+ * @constructor
+ * @description  элементы управления слайдером swiper
+ * @see Swiper
+ */
 export default function SlideNavicationButton({direction,swiperItem=undefined}) {
-    /*
-    элементы управления слайдером swiper
-    direction:str -  next or pre
 
-     */
     const swiper = useSwiper() || swiperItem;
 
     if ( direction === 'last') {

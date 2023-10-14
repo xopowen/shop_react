@@ -9,17 +9,21 @@ import LinkTerms from "../LinkTerms";
 import ajaxFetch from "../../helpFunction/ajaxFetch";
 import fromFormDataToDict from "../../helpFunction/fromFormDataToDict";
 
+/**
+ * @description  форма заказа обратного звонка.
+ * @example
+ * fields ->{
+ *         text: Textarea,
+ *         first_name: Input type =text (FieldInput)
+ *         email: Input type = email    (FieldInput)
+ *         phone: Input type = text     (PhoneInput)
+ *     }
+ * @return {JSX.Element}
+ * @constructor
+ */
 export default function FormOrderCallback(){
-    // форма заказа обратного звонка.
-    /*fields ->{
-        text: Textarea,
-        first_name: Input type =text (FieldInput)
-        email: Input type = email    (FieldInput)
-        phone: Input type = text     (PhoneInput)
-    }
-
-    * */
     let [isSuccess,setSuccess] = useState()
+
     let [errors,serErros] = useState([])
     function haveAskQuestion(e){
         // Отправка заявки на звонок по ajax.

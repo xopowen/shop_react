@@ -6,11 +6,16 @@ import React from "react";
 import FormOrderCallback from "../components/formComponents/forms/FormOrderCallback";
 
 
+/**
+ *
+ * @param {String} head
+ * @return {JSX.Element}
+ * @constructor
+ * @component
+ * @description  Страница статической информации.
+ */
 export default function Requisites ({head}){
-    /*
-    props->{head - заголовок}
-    Страница статической информации.
-    */
+
     return <>
         <section className="sections">
             <h1 className="sections__head">
@@ -30,7 +35,7 @@ export default function Requisites ({head}){
                     ИНН 183112400380
                 </address>
                 <address className="tablets__item">
-                    <img src={phone} />
+                    <img src={phone} alt={''}/>
                     +7 982 993 90 05
                 </address>
                 <address className="tablets__item">
@@ -49,7 +54,7 @@ export default function Requisites ({head}){
                     <Network/>
                 </address>
                 <address className="tablets__item">
-                    <img src={phone} />
+                    <img src={phone} alt={''} />
                     +7 982 993 90 05
                 </address>
                 <address className="tablets__item">

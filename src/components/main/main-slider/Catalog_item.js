@@ -2,11 +2,17 @@ import PictureMixin from "../../helpFunction/PictureMixin";
 import {Link} from "react-router-dom";
 import useIntObs from "../../hooks/useIntObs";
 
+/**
+ *
+ * @param props
+ * @description отображение карточки каталога в главном слайдере
+ * @return {JSX.Element}
+ * @constructor
+ */
 export function Catalog_item(props) {
-    let data = props.data
-    let [ref,isView] = useIntObs({},true)
-    /*
-    * {"id":1,
+    /**
+     * @example
+    * data->{"id":1,
     * "manufacturer":{"id":3,
     *                 "name":"Promedic",
     *                 "img":"http://localhost:8000/media/manufacturer/medtrinic_covidien_logo_1.png",
@@ -20,6 +26,9 @@ export function Catalog_item(props) {
     * "head":"Ручные и автоматические дефибрилляторы «Primedic»",
     * "subtitle":"высокое качество и выгодные цены."}
     * */
+    let data = props.data
+    let [ref,] = useIntObs({},true)
+
 
     return <article ref={ref} className="swiper-slide card-catalog card-catalog_big blue-vision ">
         <div className={'card-catalog_body card-catalog__body' }>

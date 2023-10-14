@@ -1,14 +1,19 @@
 import {useState} from "react";
 
-export default function Counter({name,mainClass,placeholder,startValue}){
-    /*поле счётчик для изменения количества элементов перед отправкой формы.
-    props->{
-    name
-    ,mainClass
-    ,placeholder
-    ,startValue}
+/**
+ *
+ * @param {string} name
+ * @param {string|undefined} mainClass
+ * @param {string|undefined} placeholder
+ * @param {Number|undefined} startValue
+ * @return {JSX.Element}
+ * @description поле счётчик для изменения количества элементов перед отправкой формы.
+ */
+export default function Counter({name,
+                                mainClass,
+                                placeholder,
+                                startValue}){
 
-     */
     let [counter,setConter]=useState(startValue || 0 )
 
     function haveMines(e){

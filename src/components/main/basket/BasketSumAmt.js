@@ -2,8 +2,14 @@ import ElementCounter from "../../header/ElementCounter";
 import {observer} from "mobx-react-lite";
 import stateBasket from "../../mbox/BasketState";
 
+/**
+ *
+ * @type {React.FunctionComponent}
+ * @description Отображает количество товаров в корине.
+ * @depend stateBasket.
+ * @see stateBasket
+ */
 const BasketSumAmt = observer(()=>{
-    // Отображает количество товаров в корине. Зависит от stateBasket.
     let amt = stateBasket.amt
 
     return  <ElementCounter value={   amt }  />

@@ -1,6 +1,10 @@
+/**
+ *
+ * @param {string} name
+ * @return {string}  document.cookie[name]
+ * @description возвращает данные из cookie
+ */
 export function getCookie(name) {
-    //получение cookie по имени
-    // name-> document.cookie[name]
     const value = `; ${document.cookie}`;
     const parts = value.split(`; ${name}=`);
     if (parts.length === 2)

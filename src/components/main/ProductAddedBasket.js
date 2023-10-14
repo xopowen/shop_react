@@ -3,13 +3,24 @@ import {createPortal} from "react-dom";
 import {useRef} from "react";
 
 
+/**
+ *
+ * @param {Number} producID
+ * @param {function} haveShow
+ * @return {React.ReactPortal}
+ * @constructor
+ * @description Окно отображается поверх остальных.
+ *              Уведомление о добавлении товара в корзину.
+ */
 export default function ProductAddedBasket({producID,haveShow}){
-    /*
-    портал.
-    Окно отображается поверх остальных.
-    Уведомление о добавлении товара в карзину.
-    * */
     let ref = useRef()
+
+    /**
+     * @description как только поьзователь кликнет за пределы области
+     * @description вызовет haveShow
+     * @callback haveShow
+     * @param {Event} e
+     */
     function haveShowProxy(e){
 
         let positionRef = ref.current.getBoundingClientRect()

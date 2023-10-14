@@ -68,11 +68,9 @@ root.render(
                   <Route path = {'login'} element={<Login/>}/>
                   <Route path = {'registration'} element={<Registration/>}/>
 
-                  <Route path ={'set-order'} element={
-                      <PrivateRoute>
+                  <Route path ={'set-order'} element={<PrivateRoute>
                          <SendOrder head={'Оформление заказа'}/>
-                      </PrivateRoute>}
-                          />
+                      </PrivateRoute>}/>
 
                   <Route path ={'basket'} element={<PrivateRoute>
                       <Basket head={'Бренды и заводы производители'}/>
@@ -83,18 +81,14 @@ root.render(
                   <Route path = {'personal-area/orders'} element={<PrivateRoute>
                       <UserOrders head={'Заказы'}/>
                   </PrivateRoute>}/>
-
                   <Route path = {'personal-area/feedbacks'} element={<PrivateRoute>
                       <UserFeedBacks head={'Отзывы'}/>
                   </PrivateRoute>}/>
 
-
-                  <Route path = {'comparisons'} element={
-                      <PrivateRoute>
+                  <Route path = {'comparisons'} element={<PrivateRoute>
                           <Compare head = {'Сравнение товаров'} />
                       </PrivateRoute>}/>
-                  <Route path = {'comparisons/:catalogName'} element={
-                      <PrivateRoute>
+                  <Route path = {'comparisons/:catalogName'} element={<PrivateRoute>
                           <CompareCatalog/>
                       </PrivateRoute>}/>
 

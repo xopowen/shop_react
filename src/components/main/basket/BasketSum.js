@@ -2,18 +2,22 @@ import {observer} from "mobx-react-lite";
 import stateBasket from "../../mbox/BasketState";
 import {useNavigate} from "react-router-dom";
 
-let BasketSum = observer((props)=>{
-    /*
-    * собирает сумму выбранных о товарах в Basket. Зависит от stateBasket.
-    * если выбранные товары нужно оформить перенаправлять на '/set-order/'.
-    * если выбранный товаров нет кнопка будит не активна
-    * */
-
+/**
+ *
+ * @type {React.FunctionComponent}
+ * @depend stateBasket
+ * @see stateBasket
+ * @description собирает сумму выбранных о товарах в Basket.
+ * @description если выбранные товары нужно оформить перенаправлять на '/set-order/'.
+ * @description если выбранный товаров нет кнопка будит не активна
+ */
+let BasketSum = observer(()=>{
     let navigate = useNavigate()
     let amt = stateBasket.getSumPriceForAmt()
     function haveRedirectToSetOrder(e){
         if(stateBasket.getSumPriceForAmt() > 0)
         navigate('/set-order/')
+        e.preventDefault()
     }
 
 

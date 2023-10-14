@@ -1,9 +1,14 @@
 import pdf_file from "../img/icons/pdf-file.svg"
+
+/**
+ *
+ * @param {String} head
+ * @return {JSX.Element}
+ * @constructor
+ * @description  Страница статической информации. Оплата
+ */
 export default function Payments({head}){
-    /*
-    props->{head - заголовок}
-    Страница статической информации.
-    */
+
     return<>
 
         <section className="sections">
@@ -34,15 +39,15 @@ export default function Payments({head}){
             <ul className="sections__body agreement-list">
                 <li className="agreement-list__item">
                     <img src={pdf_file} alt="file"/>
-                    <a href=""download="true"> Договор отсрочки платежа</a>
+                    <a href="#" download="true"> Договор отсрочки платежа</a>
                 </li>
                 <li className="agreement-list__item">
                     <img src={pdf_file} alt="file"/>
-                    <a href="" download="true">Договор оплаты</a>
+                    <a href="#" download="true">Договор оплаты</a>
                 </li>
                 <li className="agreement-list__item">
                     <img src={pdf_file} alt="file"/>
-                    <a href="" download="true"> Приложение к договору</a>
+                    <a href="#" download="true"> Приложение к договору</a>
                 </li>
             </ul>
         </section>

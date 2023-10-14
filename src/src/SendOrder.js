@@ -1,7 +1,6 @@
-import {useEffect, useRef, useState} from "react";
+import {useRef, useState} from "react";
 import {useNavigate} from "react-router-dom";
 import clientState from "../components/mbox/ClientState";
-import authStore from "../components/mbox/AuthStore";
 
 import {observer} from "mobx-react-lite";
 
@@ -11,25 +10,27 @@ import stateBasket from "../components/mbox/BasketState";
 import LinkTerms from "../components/formComponents/LinkTerms";
 
 
-
+/**
+ *
+ * @type {React.FunctionComponent<{readonly head?: String}>}
+ * @param {String} head
+ * @return JSX.Element
+ * @description страница оформления заказа выданных в корзине заказов.
+ * @description Также отображается форма для изменения данных о пользователе 
+ * необходимых для оформления заказа.
+ * @depend clientState,stateBasket
+ * @see clientState
+ * @see stateBasket
+ * 
+ */
 let SendOrder = observer(({head})=>{
-    /*
-    props->{head - заголовок}
-    страница оформления заказа выданных в корзине заказов.
-    Также отображается форма для изменения данных о пользователе необходимых для оформления заказа
-    зависит от clientState,authStore,stateBasket
-    */
+ 
     let info = clientState.info
     let ref = useRef()
     let navigate = useNavigate()
     let [error,setError] = useState()
-    useEffect(()=>{
-        if(!authStore.isAuth)
-            clientState.clean()
 
-    },[authStore.isAuth])
-
-    function haveChangeInfo( e ){
+    function haveChangeInfo(e){
         e.preventDefault()
         let data = fromFormDataToDict(ref.current)
         clientState.changeInfo(data).then(()=>{
@@ -41,15 +42,14 @@ let SendOrder = observer(({head})=>{
                 setError(res)
             }
         )
-
     }
 
     return <section className=" sections">
 
         <div className="sections__body">
             {info && <form ref={ref}
-                            onSubmit={haveChangeInfo}
-                           className="form" action="">
+                           onSubmit={haveChangeInfo}
+                           className="form">
                 <div className="form__header">
                     <h2 className=" sections__head">{head}</h2>
                 </div>

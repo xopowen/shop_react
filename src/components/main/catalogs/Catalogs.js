@@ -5,30 +5,31 @@ import CatalogItem from "./CatalogItem";
 import useIntObs from "../../hooks/useIntObs";
 
 
+/**
+ *
+ * @param {string} head
+ * @description отображает список каталогов полученные с сервера
+ * @return {JSX.Element}
+ * @constructor
+ * @url '/catalogs/'
+ */
 export default function Catalogs({head}) {
-    /*
-    * отображает список каталогов полученный по
-    * url->'/catalogs/'
-    * */
-
     const [statusShowFull, setstatusShowFull] = useState(false)
     const [catalogs, setCatalogs] = useState([])
-    let  [ref,isView] = useIntObs()
+    let  [ref,] = useIntObs()
 
     useEffect(() => {
             ajaxFetch({
                 url:'/catalogs/',
                 method:"GET"
             }).then(respose=>{
-                let [ok,error]= respose
+                let [ok,]= respose
                 if(ok){
                     ok.then(res=>setCatalogs(res))
                 }
             })
 
     },[])
-
-
 
     return <section ref={ref} className="sections  opacity products-catalog">
         <h2 className='sections__head '>

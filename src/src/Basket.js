@@ -5,15 +5,16 @@ import stateBasket from "../components/mbox/BasketState";
 //img
 import check_printer from '../img/icons/check-printer.svg';
 
-
-
-
-
+/**
+ *
+ * @type {React.FunctionComponent<{readonly head?: *}>}
+ * @param {String} head
+ * @description корзина пользователя
+ * @depend stateBasket
+ * @see stateBasket
+ */
 let Basket =  observer(({head})=>{
-    /*
-    * props->{head - заголовок}
-    * корзина пользователя зависит от stateBasket.
-    * */
+
     let  cardList = stateBasket.elements
 
     return <section className="sections sections_head-left">

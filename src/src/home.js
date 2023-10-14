@@ -7,8 +7,12 @@ import Manufacture from "../components/main/manufacture/Manufacture";
 import News from "../components/main/news/News";
 
 
-
-export default function Home(props){
+/**
+ *
+ * @return {JSX.Element}
+ * @components
+ */
+export default function Home(){
 
     return<>
         <MainSlider/>

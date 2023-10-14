@@ -1,24 +1,29 @@
 import PictureMixin from "../../helpFunction/PictureMixin";
 import StarsScore from "../../subComponents/StarsScore";
 
+/**
+ *
+ * @param {Object} product
+ * @param {Object} feedback
+ * @example
+ * product->{
+ *     "id":4,
+ *     "name":"ДЕФИБРИЛЛЯТОР-МОНИТОР  ДКИ-Н-11",
+ *     }
+ * feedback->{"id":1,
+ *     "object_id":4,
+ *     "score":3,
+ *     "comment":"",
+ *     "date":"2023-09-09T10:47:09.462780Z",
+ *     "content_type":11,"client":1
+ *     }
+ *
+ * @return {JSX.Element}
+ * @constructor
+ * @description Отобразить карточку комментария на товар.
+ */
 export default function UserFeedBacksCard({product,feedback}){
-    /*
-    отобразить карточку комментария на товар.
 
-    props->{product->{
-    "id":4,
-    "name":"ДЕФИБРИЛЛЯТОР-МОНИТОР  ДКИ-Н-11",
-    }
-    ,feedback->{"id":1,
-                 "object_id":4,
-                 "score":3,
-                 "comment":"",
-                 "date":"2023-09-09T10:47:09.462780Z",
-                 "content_type":11,"client":1
-                 }
-                 }
-
-     * */
 
     return <article className="basket__card basket-card">
         <div className="basket-card__col-1">

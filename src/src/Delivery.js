@@ -1,19 +1,26 @@
 import MapSection from "../components/main/MapSection";
+import Counter from "../components/subComponents/Counter";
+//img
 import deliverySvg from '../img/icons/delivery.svg'
 import locationSvg from '../img/icons/location.svg'
-import Counter from "../components/subComponents/Counter";
+import LinkTerms from "../components/formComponents/LinkTerms";
+import Submit from "../components/formComponents/Submit";
+/**
+ *
+ * @param {String} head
+ * @return {JSX.Element}
+ * @component
+ * @description Страница статической информации. Доставка
+ */
 export default function Delivery({head}){
-    /*
-    * props->{head - заголовок}
-    Страница статической информации.
-    * */
+
     return <>
         <section className="sections">
             <h1 className="sections__head">{head}</h1>
         </section>
         <address className="send-info">
             <h5>
-                <img src={locationSvg}/>
+                <img src={locationSvg} alt=''/>
                     <span>Самовывоз со склада по адресу: УР, г. Ижевск, ул. Пушкинская 290.</span>
             </h5>
         </address>
@@ -21,7 +28,7 @@ export default function Delivery({head}){
         <section className="sections">
             <address className="send-info">
                 <h5>
-                    <img src={deliverySvg}/>
+                    <img src={deliverySvg} alt='грузовик доставки.'/>
                     <span>Доставка ведущими Транспортными компаниями</span>
                 </h5>
                 <p>
@@ -71,9 +78,8 @@ export default function Delivery({head}){
                 </div>
             </div>
             <div className="form__footer">
-                <input type="submit" className="blow-button" title="расчет" value={'расчет'}/>
-                    <a href="#" className="form__text-smail">Нажимая на кнопку «отправить», я соглашаюсь с
-                        условиями.</a>
+                <Submit value='расчет'/>
+                <LinkTerms/>
             </div>
         </form>
 

@@ -1,18 +1,21 @@
 import React from "react";
 import ErrorFORM from "../helpFunction/ErrorFORM";
 
+/**
+ *
+ * @param {string} name
+ * @param {string} placeholder
+ * @param {string} type
+ * @param {boolean} ariaInvalid
+ * @param {boolean} readOnly
+ * @param {any} defaultValue
+ * @param { Object } errors - отобразит ошибки по ключу {name}
+ * @description
+ * @return {JSX.Element}
+ * @description поле ввода для формы.
+ */
 export default function FieldInput ({name,placeholder,type,ariaInvalid,readOnly,defaultValue,errors}){
-    /*поле ввода для формы.
-    * props -> {name,
-    * placeholder: str устанавливает также и title,
-    * type,
-    * ariaInvalid,
-    * readOnly,
-    * defaultValue,
-    * errors:{} -  отобразит ошибки по ключу {name}
-    * }
-    *
-    * */
+
     return <label className="form__field">
 
         <input type={type}

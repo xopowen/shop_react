@@ -2,21 +2,19 @@
 import {observer} from "mobx-react-lite";
 import stateBasket from "../../mbox/BasketState";
 
-
-
-
+/**
+ * @param {string} name
+ * @param {string} mainClass - дополнительный класс
+ * @param {string} placeholder
+ * @param {Object} element -  от куда нужно брать значение.
+ * @type {React.FunctionComponent}
+ * @depend stateBasket
+ * @see stateBasket
+ * @description счётчик для изменения количества товара в заказе.
+ * @description min 0.
+ * @description max 99.
+ */
 let CounterBasket = observer(({name,mainClass,placeholder,element})=>{
-     /*
-     props->{name
-     ,mainClass - дополнительный класс
-     ,placeholder
-     ,element - element{Order} от куда нужно брать значение.
-     }
-     * счётчик для изменения количества товара в заказе. Зависит от stateBasket.
-     * min 0.
-     * max 99.
-     * */
-
 
     function haveMines(e){
         stateBasket.minesAmtToOrder(element)

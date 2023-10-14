@@ -2,13 +2,16 @@ import {useEffect, useState} from "react";
 import ajaxFetch from "../../helpFunction/ajaxFetch";
 import EventElement from "./EventElement";
 
+/**
+ *
+ * @param head
+ * @return {JSX.Element}
+ * @constructor
+ * @description отображает список карточек мероприятий.
+ * @description получает список с сервера
+ * @url '/about-company/'
+ */
 export default function Events ({head}){
-    /*
-    props ->{head - заголовок}
-    отображает писко карточек мероприятий.
-    получает список по  url:'/about-company/',
-
-    * */
 
     let [data,setData] = useState([])
 

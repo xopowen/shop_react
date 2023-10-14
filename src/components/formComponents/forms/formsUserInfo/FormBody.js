@@ -5,12 +5,16 @@ import PhoneInput from "../../PhoneInput";
 import clientState from "../../../mbox/ClientState";
 
 
-
+/**
+ *
+ * @type {React.FunctionComponent<object>}
+ * @description Часть форм в котором отображаются поля связанные с информацией о клиенте.
+ *         Поля могут быть заполнены или пусты.
+ * @dependents       Зависит от Mbox менеджера состояний
+ * @see clientState
+ */
 let FormBody = observer(()=>{
-    /* Часть форм в котором отображаются поля связанные с информацией о клиенте.
-        Поля могут быть заполнены или пусты.
-        Зависит от Mbox менеджера состояний clientState
-    */
+
     let data = clientState.info
     let fieldUserList = Object.entries(data.user || {})
 

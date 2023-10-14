@@ -1,21 +1,25 @@
 import {Map, YMaps} from "@pbe/react-yandex-maps";
 import {useState,useMemo} from "react";
 
+/**
+ *
+ * @param {string} city
+ * @param {string} country
+ * @description Если донно разрешение на геолокацию то отобразит найденный город если нет то Москву.
+ * @return {JSX.Element}
+ * @constructor
+ */
 export default function MapSection({city,country}){
-    /*
-    если донно разрешение на геолокацию то отобразит найденный город если нет то Москву.
-    * */
-
     let [geolocation,setGeoLocation] = useState([])
     let [isGetLocation,setIsGetLocation]=useState()
-    let location =useMemo(()=>{
+    let location = useMemo(()=>{
         navigator.geolocation.getCurrentPosition((position)=>{
             setGeoLocation([position.coords.latitude, position.coords.longitude])
             setIsGetLocation(true)
     }) 
     },[])
 
-    return    <section className="sections">
+    return <section className="sections">
         <YMaps>
             { isGetLocation &&  <Map id={'map'}
                               height={'100vh'}

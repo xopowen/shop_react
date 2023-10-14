@@ -1,6 +1,2 @@
 import { render, screen } from '@testing-library/react';
-
-
-test('renders learn react link', () => {
-
-});
+import Page404 from "./src/Page404";

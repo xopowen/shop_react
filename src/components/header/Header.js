@@ -14,9 +14,15 @@ import menu  from './../../img/menu 1.png';
 import phone from  "./../../img/icons/phone.svg"
 
 
-export default function Header(props){
-    /* отображает верхнюю часть header
-      запрашивает заголовок csrf-token нужный для форм*/
+/**
+ *
+ * @return {JSX.Element}
+ * @constructor
+ * @description отображает верхнюю часть header
+ *       запрашивает заголовок csrf-token нужный для форм
+ * @url '/csrf-token/'
+ */
+export default function Header(){
     let [showPopupMenu,setShow] = useState(false)
 
     useEffect(()=>{
@@ -38,7 +44,7 @@ export default function Header(props){
             </Link>
             <div className='header__catalog'>
                 <button className="button-not-background " >
-                    <PictureMixin img = {menu} onClick={e =>haveShowBurgerMenu(!showPopupMenu) } />
+                    <PictureMixin img = {menu} onClick={() =>haveShowBurgerMenu(!showPopupMenu) } />
                 </button>
                 <Link to={'catalogs'} className="upper-text blow-text" >каталог</Link>
             </div>

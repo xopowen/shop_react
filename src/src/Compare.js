@@ -5,12 +5,15 @@ import CatalogItem from "../components/main/catalogs/CatalogItem";
 import stateCompare from "../components/mbox/CompareProducts";
 import Spinner from "../components/Spinner";
 
+/**
+ * @ignore
+ * @type {React.FunctionComponent<{readonly head?: String}>}
+ * @param {String} head
+ * @description отображает лист каталогов товаров в сравнении.
+ * @depend stateCompare
+ */
 let Compare = observer(({head})=>{
-    /*
-    props->{head - заголовок}
-    отображает лист каталогов товаров в сравнении.
-    зависит от stateCompare
-    * */
+
     let  catalogs  = stateCompare.catalogs || []
     let  isLoading = stateCompare.isLoading
 

@@ -1,8 +1,11 @@
 import {getCookie} from "./getCookie";
 
 
+/**
+ * @description получаем токен
+ * @return {string}
+ */
 export default function getCsrftoken() {
-    //  получаем токен
     return  getCookie('csrftoken')
 
 }

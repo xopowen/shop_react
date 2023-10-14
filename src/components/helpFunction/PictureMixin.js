@@ -2,13 +2,20 @@ import React, {  useState} from "react";
 import {CLASS_IMG} from "../constants";
 
 
-
+/**
+ *
+ * @param {string} img
+ * @param props
+ *
+ * @descriptionдобавляет source с webp если ссылка на такой элемент ест и она рабочая.
+ * @description важно чтобы файл с расширением webp имел имя тоже что и передаваемый img.
+ * @description иначе оставляет просто img
+ *
+ * @return {JSX.Element}
+ * @constructor
+ */
 export default function PictureMixin({img,...props}){
-    /*
-    * добавляет source с webp если ссылка на такой элемент ест и она рабочая.
-    * важно чтобы файл с расширением webp имел имя тоже что и передаваемый img.
-    * иначе оставляет просто img
-    * */
+
 
     props['className']= props['className'] || CLASS_IMG
     let [load,setLoad] = useState(0)

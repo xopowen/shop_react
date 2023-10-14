@@ -8,74 +8,82 @@ import Counter from "../components/subComponents/Counter";
 import stateBasket from "../components/mbox/BasketState";
 import Spinner from "../components/Spinner";
 import SliderProducts from "../components/main/product-slider/SliderProducts";
-//img
-import compare_black from '../img/icons/compare-black.svg'
-import print_black from '../img/icons/print-black.svg'
-import documents_folder from '../img/icons/documents-folder.svg'
 import VideoPlair from "../components/main/VideoPlair";
 import ProductAddedBasket from "../components/main/ProductAddedBasket";
 import stateCompare from "../components/mbox/CompareProducts";
 import {observer} from "mobx-react-lite";
-import FieldInput from "../components/formComponents/FieldInput";
-import Textarea from "../components/formComponents/Textarea";
-import fromFormDataToDict from "../components/helpFunction/fromFormDataToDict";
 import FormFeedBackAdd from "../components/formComponents/forms/FormFeedBackAdd";
+//img
+import compare_black from '../img/icons/compare-black.svg'
+import print_black from '../img/icons/print-black.svg'
+import documents_folder from '../img/icons/documents-folder.svg'
 
 
-let ProductItemPage = observer((props)=>{
-    /*
-    Страница с подробными данными о товаре
-    data ->{"id":5,
-    "img":[{"link":"http://localhost:8000/media/img/2023/09/18/product.png"}],
-    "video":[{"id":1,"object_id":5,"link":"http://localhost:8000/media/move/2023/09/19/o.mp4",
-    "content_type":11}],
-    "documents":[],
-    "feedback":[
-        {"id":3,
-        "client":{
-            "id":1,
-            "username":"xopowen-admin",
-            "first_name":"Паша",
-            "last_name":"Иванов",
-            "email":"xopowen@mail.com"
-            },
-        "object_id":5,
-        "score":0,
-        "comment":"",
-        "date":"2023-09-19T09:51:26.869236Z",
-        "content_type":11}]
-     ,"manufacturer":{
-            "id":3,
-            "name":"Promedic",
-            "img":"http://localhost:8000/media/manufacturer/medtrinic_covidien_logo_1.png",
-            "description":""
-            },
-     "catalog":{
-        "id":3,
-        "name":"Дефибреляторы",
-        "img":"http://localhost:8000/media/catalog/xb6V280.png",
-        "order":1
-        },
-     "proportion":[],
-     "name":"ДЕФИБРИЛЛЯТОР-МОНИТОР  ДКИ-Н-11",
-     "description":null or '',
-     "act":0,
-     "amt":0,
-     "price":10000.0,
-     "old_price":10998.0,
-     "currency":"₽",
-     "technical_feature":"" -> (большой текст которыйюудит разделятся по '\n' на абзацы )
-      "article":"000 000",
-      "YTP":null,
-      "date":"2023-09-18T08:38:56.642915Z",
-      "visibility":false,
-      "avg_score":0
-      }
-    */
-    let [showOverPageElement,setShow] = useState()
+
+/**
+ *
+ * @type {React.FunctionComponent<object>}
+ * @description  Страница с подробными данными о товаре
+ * @return JSX.Element
+ * @description страничка товара
+ * @url - `/catalogs/${catalogName}/${productID}/`
+ * @description параметры url берутся с useParams.
+ */
+let ProductItemPage = observer(( )=>{
+
+    /**
+     * @example
+     * data ->{"id":5,
+     *     "img":[{"link":"http://localhost:8000/media/img/2023/09/18/product.png"}],
+     *     "video":[{"id":1,"object_id":5,"link":"http://localhost:8000/media/move/2023/09/19/o.mp4",
+     *     "content_type":11}],
+     *     "documents":[],
+     *     "feedback":[
+     *         {"id":3,
+     *         "client":{
+     *             "id":1,
+     *             "username":"xopowen-admin",
+     *             "first_name":"Паша",
+     *             "last_name":"Иванов",
+     *             "email":"xopowen@mail.com"
+     *             },
+     *         "object_id":5,
+     *         "score":0,
+     *         "comment":"",
+     *         "date":"2023-09-19T09:51:26.869236Z",
+     *         "content_type":11}]
+     *      ,"manufacturer":{
+     *             "id":3,
+     *             "name":"Promedic",
+     *             "img":"http://localhost:8000/media/manufacturer/medtrinic_covidien_logo_1.png",
+     *             "description":""
+     *             },
+     *      "catalog":{
+     *         "id":3,
+     *         "name":"Дефибреляторы",
+     *         "img":"http://localhost:8000/media/catalog/xb6V280.png",
+     *         "order":1
+     *         },
+     *      "proportion":[],
+     *      "name":"ДЕФИБРИЛЛЯТОР-МОНИТОР  ДКИ-Н-11",
+     *      "description":null or '',
+     *      "act":0,
+     *      "amt":0,
+     *      "price":10000.0,
+     *      "old_price":10998.0,
+     *      "currency":"₽",
+     *      "technical_feature":"" -> (большой текст которыйюудит разделятся по '\n' на абзацы )
+     *       "article":"000 000",
+     *       "YTP":null,
+     *       "date":"2023-09-18T08:38:56.642915Z",
+     *       "visibility":false,
+     *       "avg_score":0
+     *       }
+     */
+    let [showOverPageElement,setShow] = useState(false)
     let {catalogName,productID} = useParams()
     let [data,setData] = useState()
-    let [loadStats,setLoadStats] = useState()
+    let [loadStats,setLoadStats] = useState(false)
 
 
 
@@ -84,7 +92,7 @@ let ProductItemPage = observer((props)=>{
             url:`/catalogs/${catalogName}/${productID}/`,
             method:'GET'
         }).then(response=>{
-            let [ok,error]=response
+            let [ok]=response
             if(ok){
                 ok.then(res=>setData(res))
             }
@@ -93,14 +101,17 @@ let ProductItemPage = observer((props)=>{
 
     function haveAddtoBasket(e){
         setLoadStats(true)
-        stateBasket.addToBasket(data.id).then( () => {
-            setLoadStats(false)
-            setShow(true)
-        })
+        stateBasket.addToBasket(data.id)
+            .then( () => {
+                setShow(true)
+            })
+            .finally(()=> setLoadStats(false))
+        e.preventDefault()
     }
 
     function haveAddToCompare(e){
         stateCompare.addToCompare(productID)
+        e.preventDefault()
     }
 
     function haveShowOverPageElement(value=false){
@@ -218,7 +229,7 @@ let ProductItemPage = observer((props)=>{
                     {data?.documents && data.documents.map(v=>{
                         return <li key={v.id} className="certificate__item">
                             <a href={v.file} download="true">
-                                <img src={documents_folder}/>
+                                <img src={documents_folder} alt={'файл:'}/>
                                 <span>{v.file}</span>
                             </a>
                         </li>

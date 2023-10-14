@@ -4,23 +4,36 @@ import {Link, useLocation} from "react-router-dom";
 import StarsScore from "./StarsScore";
 import useIntObs from "../hooks/useIntObs";
 
+/**
+ *
+ * @param {Object} data
+ * @example
+ * data->{
+ *       {
+ *        "id":2,
+ *        "name":"ТЕст",
+ *         "img": '' or null,
+ *         "description":""
+ *        }
+ *             or
+ *      {"id":1,
+ *      "title":"УЧЕНЫЕ ВЫРАСТИЛИ КЛЕТКИ  СО ВЖИВЛЕННОЙ В НИХ ЭЛЕКТРОНИКОЙ",
+ *      "author":"Константин К.Р",
+ *      "date":"2023-09-10T12:09:57.978776Z",
+ *      "feedback":[{"score":6}],
+ *      "img":"http://localhost:8000/media/news/2023/09/10/news1.png",
+ *      "avg_score":3},
+ *      }
+ * @return {JSX.Element}
+ * @constructor
+ * @description карта новостей или производителя.
+ * @description если  useLocation().pathname == '/manufactures' это будит карточка производителя.
+ * @description иначе карточка новости.
+ */
 export default function CardInfo({data}){
-    /*
-    ката новостей или производителя.
-    props->{data->{
-      {"id":2,"name":"ТЕст","img":'' or null,"description":""}
-            or
-     {"id":1,
-     "title":"УЧЕНЫЕ ВЫРАСТИЛИ КЛЕТКИ  СО ВЖИВЛЕННОЙ В НИХ ЭЛЕКТРОНИКОЙ",
-     "author":"Константин К.Р",
-     "date":"2023-09-10T12:09:57.978776Z",
-     "feedback":[{"score":6}],
-     "img":"http://localhost:8000/media/news/2023/09/10/news1.png",
-     "avg_score":3},
-     }}
-    * */
+
     const location = useLocation()
-    let [ref,isView] =  useIntObs({},true)
+    let [ref] =  useIntObs({},true)
 
     let link;
     if(location.pathname ==='/manufactures'){

@@ -1,14 +1,22 @@
 import PictureMixin from "../../helpFunction/PictureMixin";
 import React  from "react";
 
+/**
+ *
+ * @param {Object} data
+ * @example
+ *     data=>{
+ *         title:String,
+ *         position_img:'L' or 'R',
+ *         img:String,
+ *         text:String
+ *     }
+ * @return {JSX.Element}
+ * @constructor
+ */
 export default function  Paragraph({data}){
 
-    // data=>{
-    //     title:String,
-    //     position_img:'L' or 'R',
-    //     img:String,
-    //     text:String
-    // }
+
     return <article className="news-article__item appear">
         <div className="news-article__right appear">
            <PictureMixin img={data?.img} title = {data?.title} alt={' '}/>

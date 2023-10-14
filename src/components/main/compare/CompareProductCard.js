@@ -8,69 +8,75 @@ import stateBasket from "../../mbox/BasketState";
 import React, {useState} from "react";
 import ProductAddedBasket from "../ProductAddedBasket";
 import Spinner from "../../Spinner";
-export default function CompareProductCard({data,propertyList}){
-    /*
-    * отображает карточку товара в Compare.
-    *
-    * props->{
-    * data - {"id":3,
-    *       "img":[{"link":""}],
-    *       "feedback":[],
-    * "name":"АВТОМАТИЧЕСКИЙ ДЕФИБРИЛЛЯТОР PRIMEDIC HEARTSAVE PAD",
-    * "description":null,
-    * "act":97530,
-    * "amt":0,
-    * "price":15000.0,
-    * "old_price":15000.0,
-    * "currency":"₽",
-    * "technical_feature":""
-    * article":"000 000",
-    * "YTP":null,
-    * "date":"2023-08-31T13:37:47.048345Z",
-    * "visibility":false,
-    * "manufacturer":2,
-    * "catalog":3,
-    * "avg_score":1,
-    * "property":[
-    *       {"id":2,
-    *        "value":{"id":4,
-    *                "value":"работа",
-    *                "show_menu":false,
-    *                "show_popup":false,
-    *                "show_filter":true,
-    *                "selected":false,
-    *                "property":7
-    *                 },
-    *        "property":{"id":7,
-    *                    "name":"Назначение",
-    *                    "show_popup":false,
-    *                    "show_filter":false,
-    *                    "selected":false,
-    *                    "catalog":null
-    *                    },
-    *        "product":3},
-    * }
-     * propertyList - список свойств который нужно найти в data.property
-        example->{"id":6,
-            "name":"способ работы",
-             "show_popup":true,
-             "show_filter":true,
-             "selected":false,
-             "catalog":3
-             * }
-    *
-    * если свойства нет нечего не отображать.
-    * }
-    * */
-    let [ref,isView] = useIntObs({},true)
-    let [showOverPageElement,setShow] = useState()
-    let [loadStats,setLoadStats] = useState()
 
+/**
+ *
+ * @param {Object} data
+ * @param {Object} propertyList - список свойств который нужно найти в data.property
+
+ * @constructor
+ * @description отображает карточку товара в Compare.
+ * @example
+ * data - {"id":3,
+ *       "img":[{"link":""}],
+ *       "feedback":[],
+ *       "name":"АВТОМАТИЧЕСКИЙ ДЕФИБРИЛЛЯТОР PRIMEDIC HEARTSAVE PAD",
+ *       "description":null,
+ *       "act":97530,
+ *       "amt":0,
+ *       "price":15000.0,
+ *       "old_price":15000.0,
+ *       "currency":"₽",
+ *       "technical_feature":""
+ *       "article":"000 000",
+ *       "YTP":null,
+ *       "date":"2023-08-31T13:37:47.048345Z",
+ *       "visibility":false,
+ *       "manufacturer":2,
+ *       "catalog":3,
+ *        "avg_score":1,
+ *    "property":[
+ *       {"id":2,
+ *        "value":{
+ *                "id":4,
+ *                "value":"работа",
+ *                "show_menu":false,
+ *                "show_popup":false,
+ *                "show_filter":true,
+ *                "selected":false,
+ *                "property":7
+ *                 },
+ *        "property":{"id":7,
+ *                    "name":"Назначение",
+ *                    "show_popup":false,
+ *                    "show_filter":false,
+ *                    "selected":false,
+ *                    "catalog":null
+ *                    },
+ *        "product":3},
+ * }
+ *
+ *  propertyList->{"id":6,
+ *             "name":"способ работы",
+ *              "show_popup":true,
+ *              "show_filter":true,
+ *              "selected":false,
+ *              "catalog":3
+
+ * }
+ * @descriptionесли свойства нет нечего не отображать.
+ * @return {JSX.Element}
+ * */
+export default function CompareProductCard({data,propertyList}){
+
+    let [ref,] = useIntObs({},true)
+    let [showOverPageElement,setShow] = useState(false)
+    let [loadStats,setLoadStats] = useState(false)
 
     function delFromCompare(e){
         stateCompare.delFromCompare(data.id)
+        e.preventDefault()
     }
-
     function haveShow(e){
         setLoadStats(true)
         stateBasket.addToBasket(data.id).then((request) => {
