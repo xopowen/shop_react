@@ -11,7 +11,7 @@ $mask-card-wight:916;
   column-gap: 30px;
   row-gap:11px;
 
-  @include media-phones375max{
+  @include media-portrait767max{
     display: flex;
     flex-direction: column-reverse;
     gap: 10px;
@@ -35,7 +35,7 @@ $mask-card-wight:916;
 
     }
 
-    @include media-phones375max{
+    @include media-phones480max{
       display: none;
     }
 
@@ -48,7 +48,7 @@ $mask-card-wight:916;
 
     border-left: none;
     border-right: none;
-    @include media-phones375max{
+    @include media-phones480max{
       grid-template-columns:auto;
       gap: 15px;
 
@@ -78,7 +78,7 @@ $mask-card-wight:916;
 
 .basket-card {
   padding: 0px  percentage($mask-card-wight,39);
-  @include media-phones375max{
+  @include media-phones480max{
     padding:percentage($mask-card-wight,39);
   }
   &:active{
@@ -99,7 +99,7 @@ $mask-card-wight:916;
     align-items: center;
     gap: 30px;
 
-    @include media-phones375max{
+    @include media-phones480max{
       grid-column: span 1;
       flex-direction: column;
     }
@@ -191,7 +191,7 @@ $mask-card-wight:916;
   @include media-portrait767max{
     flex-direction: column;
   }
-  @include media-phones375max{
+  @include media-phones480max{
     flex-direction: row;
   }
   button{

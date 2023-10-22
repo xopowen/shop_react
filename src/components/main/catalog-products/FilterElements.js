@@ -1,5 +1,6 @@
-import React, {useRef} from "react";
-
+import React, {useRef, useState} from "react";
+import {EFFECT_CLASS} from "../../constants";
+import next from '../../../img/next.png'
 
 /**
 
@@ -10,9 +11,10 @@ import React, {useRef} from "react";
  */
 export default function FilterElements({haveSubmit, filterField}) {
     let ref = useRef()
+    let [showFilter,setShowFilter]=useState(false)
 
-
-    return <section className="catalog__filter">
+    return <section className={`catalog__filter ${showFilter ? 'catalog__filter'+EFFECT_CLASS.active :''}`}>
+        <button style={{backgroundImage:`url(${next})`}}  onClick={()=>{setShowFilter(!showFilter)}} id="button-show-filter" className="button-not-background"/>
         <form onSubmit={haveSubmit} ref={ref} id="filter-catalog" className="filter">
             <div className="filter__price">
                 <label className="filter__min-price">

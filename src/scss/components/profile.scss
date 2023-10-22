@@ -4,7 +4,7 @@
   display: grid;
   grid-template-columns: 50% 50%;
   gap: 30px;
-  @include media-phones375max{
+  @include media-portrait767max{
     grid-template-columns:auto;
   }
   // .profile__info
